@@ -1,6 +1,6 @@
 params["_vehicle"];
 
-[_vehicle] spawn fatLurch_fnc_convertTurretAmmo;
+if (isServer || isDedicated) then{[_vehicle] spawn fatLurch_fnc_convertTurretAmmo};
 
 _vehicle addEventHandler ["Fired", {
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
