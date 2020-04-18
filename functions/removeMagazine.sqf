@@ -41,9 +41,9 @@ if (_index != -1) then
 {
 	private ["_i"];
 	_i = 0;
-   	clearMagazineCargo _container;
+   	clearMagazineCargoGlobal _container;
   	{
-		if (_index != _i) then {_container addMagazineCargo [_x,1]};
+		if (_index != _i) then {_container addMagazineCargoGlobal [_x,1]};
 		_i = _i+1;
 	} forEach _cargo;
 };
