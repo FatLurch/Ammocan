@@ -1,18 +1,15 @@
 params["_vehicle"];
 
+[_vehicle] spawn fatLurch_fnc_convertTurretAmmo;
+
 _vehicle addEventHandler ["Fired", {
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
 	
 	_turretIndex = [_unit, _weapon, _gunner] call fatLurch_fnc_getTurretIndex;	//retrieve the turret index of the current weapon system being fired
 	_found = false;
 	_ammo = (magazinesAllTurrets _unit select _turretIndex) select 2;	//ammo command has bug and won't return the ammo for a secondary turret. This is a workaround
-	
-	if(_ammo == 0) then
-	{
-		//Remove empty mags
-		_mag = (magazinesAllTurrets _unit select _turretIndex) select 0;
-		_unit removeMagazineTurret [_mag, [_turretIndex]]
-	};
+
+	[_vehicle] call fatLurch_fnc_removeEmptyMagsTurret;		//Remove empty magazines so it's easier to detect an empty weapon
 	
 	//Push ammo into the turret at 1 round remaining, otherwise the various turret types don't reload automatically, even when commanded to with "loadMagazine" and "reload"
 	if(_ammo ==1) then
@@ -57,6 +54,8 @@ _vehicle addEventHandler ["ContainerClosed", {
 	_array = [];
 	_matchMagazine = [];
 	_magazinesAllTurrets = magazinesAllTurrets _container;
+	
+	[_container] call fatLurch_fnc_removeEmptyMagsTurret;	//Remove empty magazines so it's easier to detect an empty weapon
 	
 	{
 		_index =  _x;

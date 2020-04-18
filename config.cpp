@@ -40,12 +40,18 @@ class CfgFunctions
 			
 			//[_vehicle]call fatLurch_fnc_initAmmocan;
 			class initAmmocan {file = "Ammocan\functions\initAmmocan.sqf";};
+			
+			//[_vehicle]call fatLurch_fnc_removeEmptyMagsTurret;
+			class removeEmptyMagsTurret {file = "Ammocan\functions\removeEmptyMagsTurret.sqf";};
+			
+			//[_ammoType]call fatLurch_fnc_findAmmocanType;
+			class findAmmocanType {file = "Ammocan\functions\findAmmocanType.sqf";};
+			
+			//[_vehicle]call fatLurch_fnc_convertTurretAmmo;
+			class convertTurretAmmo {file = "Ammocan\functions\convertTurretAmmo.sqf";};
 		};
 	};
 };
-
-
-
 
 class Extended_Init_EventHandlers 
 {
@@ -69,21 +75,31 @@ class Extended_Init_EventHandlers
    	};
 };
 
-
 // ###### IMPORTANT! In order for an ammocan type to show up in rifle magazines it must be lsited in the array below. Luckily the rifle can't fire any of these rounds
 class cfgWeapons
 {
 	class Rifle_Base_F;
 	class arifle_Mk20_F:Rifle_Base_F
 	{
-		magazines[] += {"Ammocan_200Rnd_127x99_mag", "Ammocan_200Rnd_127x99_mag_Tracer_Red","Ammocan_200Rnd_127x99_mag_Tracer_Yellow", "Ammocan_200Rnd_127x99_mag_Tracer_Green",  "Ammocan_200Rnd_127x99_mag_SLAP", "Ammocan_200Rnd_127x99_mag_SLAP_Tracer_Red", "Ammocan_130Rnd_338_mag:ammocan_base"};
+		// DON'T FORGET TO UPDATE findAmmocanType.sqf!!!!!!!!!!!!!!
+		magazines[] += 
+		{
+			"Ammocan_200Rnd_127x99_mag",
+			"Ammocan_200Rnd_127x99_mag_Tracer_Red",
+			"Ammocan_200Rnd_127x99_mag_Tracer_Yellow",
+			"Ammocan_200Rnd_127x99_mag_Tracer_Green",
+			"Ammocan_200Rnd_127x99_mag_SLAP",
+			"Ammocan_200Rnd_127x99_mag_SLAP_Tracer_Red",
+			"Ammocan_100Rnd_127x99_mag",
+			"Ammocan_100Rnd_127x99_mag_Tracer_Red",
+			"Ammocan_100Rnd_127x99_mag_Tracer_Yellow",
+			"Ammocan_100Rnd_127x99_mag_Tracer_Green",
+			"Ammocan_100Rnd_127x99_mag_SLAP",
+			"Ammocan_100Rnd_127x99_mag_SLAP_Tracer_Red",
+			"Ammocan_130Rnd_338_mag"
+		};
 	};
 };
-
-
-
-//model = "\A3\Structures_F_EPB\Items\Military\Ammobox_rounds_F.p3d";
-//hiddenSelectionsTextures[] = {};
 
 class CfgMagazines
  {
@@ -104,7 +120,7 @@ class CfgMagazines
  	{
  		//Vanilla
  		//RHS
-		displayName = " Ammocan - 200x 12.7x99 M2 Ball";
+		displayName = " Ammocan - 200x .50 Cal (12.7x99) M2 Ball";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm<br>200 Rounds";
 		magazines[] = {"200Rnd_127x99_mag", "rhs_mag_200rnd_127x99_mag"};
 	};
@@ -113,7 +129,7 @@ class CfgMagazines
  	{
  		//Vanilla
  		//RHS
-		displayName = " Ammocan - 200x 12.7x99 M2 Red Tracer";
+		displayName = " Ammocan - 200x .50 Cal (12.7x99) M2 Red Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Red Tracer<br>200 Rounds";
 		magazines[] = {"200Rnd_127x99_mag_Tracer_Red", "rhs_mag_200rnd_127x99_mag_Tracer_Red"};
 	};
@@ -121,7 +137,7 @@ class CfgMagazines
 	 class Ammocan_200Rnd_127x99_mag_Tracer_Yellow:ammocan_base
  	{
  		//Vanilla
-		displayName = " Ammocan - 200x 12.7x99 M2 Yellow Tracer";
+		displayName = " Ammocan - 200x .50 Cal (12.7x99) M2 Yellow Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Yellow Tracer<br>200 Rounds";
 		magazines[] = {"200Rnd_127x99_mag_Tracer_Yellow"};
 	};
@@ -129,7 +145,7 @@ class CfgMagazines
 	class Ammocan_200Rnd_127x99_mag_Tracer_Green:ammocan_base
  	{
  		//Vanilla
-		displayName = " Ammocan - 200x 12.7x99 M2 Green Tracer";
+		displayName = " Ammocan - 200x .50 Cal (12.7x99) M2 Green Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Green Tracer<br>200 Rounds";
 		magazines[] = {"200Rnd_127x99_mag_Tracer_Green"};
 	};
@@ -137,7 +153,7 @@ class CfgMagazines
 	class Ammocan_200Rnd_127x99_mag_SLAP:ammocan_base
  	{
  		//RHS
-		displayName = " Ammocan - 200x 12.7x99 M903 SLAP";
+		displayName = " Ammocan - 200x .50 Cal (12.7x99) M903 SLAP";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm M903 SLAP<br>200 Rounds";
 		magazines[] = {"rhs_mag_200rnd_127x99_SLAP_mag"};
 	};
@@ -145,18 +161,69 @@ class CfgMagazines
 	class Ammocan_200Rnd_127x99_mag_SLAP_Tracer_Red:ammocan_base
  	{
  		//RHS
-		displayName = " Ammocan - 200x 12.7x99 M903 SLAP Red Tracer";
+		displayName = " Ammocan - 200x .50 Cal (12.7x99) M903 SLAP Red Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm M903 SLAP Red Tracer<br>200 Rounds";
 		magazines[] = {"rhs_mag_200rnd_127x99_SLAP_mag_Tracer_Red"};
 	};
 	
+ 	// 100x 12.7x99 NATO aka .50 BMG =====================================================================================================
+ 	
+ 	class Ammocan_100Rnd_127x99_mag:ammocan_base
+ 	{
+ 		//Vanilla
+ 		//RHS
+		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Ball";
+		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm<br>100 Rounds";
+		magazines[] = {"100Rnd_127x99_mag", "rhs_mag_100rnd_127x99_mag"};
+	};
+ 	
+ 	class Ammocan_100Rnd_127x99_mag_Tracer_Red:ammocan_base
+ 	{
+ 		//Vanilla
+ 		//RHS
+		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Red Tracer";
+		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Red Tracer<br>100 Rounds";
+		magazines[] = {"100Rnd_127x99_mag_Tracer_Red", "rhs_mag_100rnd_127x99_mag_Tracer_Red"};
+	};
+	
+	 class Ammocan_100Rnd_127x99_mag_Tracer_Yellow:ammocan_base
+ 	{
+ 		//Vanilla
+		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Yellow Tracer";
+		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Yellow Tracer<br>100 Rounds";
+		magazines[] = {"100Rnd_127x99_mag_Tracer_Yellow"};
+	};
+		
+	class Ammocan_200Rnd_127x99_mag_Tracer_Green:ammocan_base
+ 	{
+ 		//Vanilla
+		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Green Tracer";
+		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Green Tracer<br>100 Rounds";
+		magazines[] = {"100Rnd_127x99_mag_Tracer_Green"};
+	};
+	
+	class Ammocan_100Rnd_127x99_mag_SLAP:ammocan_base
+ 	{
+ 		//RHS
+		displayName = " Ammocan - 100x .50 Cal (12.7x99) M903 SLAP";
+		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm M903 SLAP<br>100 Rounds";
+		magazines[] = {"rhs_mag_100rnd_127x99_SLAP_mag"};
+	};
+
+	class Ammocan_100Rnd_127x99_mag_SLAP_Tracer_Red:ammocan_base
+ 	{
+ 		//RHS
+		displayName = " Ammocan - 100x .50 Cal (12.7x99) M903 SLAP Red Tracer";
+		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm M903 SLAP Red Tracer<br>100 Rounds";
+		magazines[] = {"rhs_mag_100rnd_127x99_SLAP_mag_Tracer_Red"};
+	};
 	
 	// 130x .338 Magnum =====================================================================================================
 	
 	class Ammocan_130Rnd_338_mag:ammocan_base
  	{
-		displayName = " Ammocan - 130x .338 Magnum";
-		descriptionShort = "Ammocan<br>Caliber: .338 Magnum<br>130 Rounds";
+		displayName = " Ammocan - 130x .338 Norma Magnum";
+		descriptionShort = "Ammocan<br>Caliber: .338 Norma Magnum<br>130 Rounds";
 		magazines[] = {"130Rnd_338_Mag"};
 	};
  };
