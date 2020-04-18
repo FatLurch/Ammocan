@@ -96,7 +96,11 @@ class cfgWeapons
 			"Ammocan_100Rnd_127x99_mag_Tracer_Green",
 			"Ammocan_100Rnd_127x99_mag_SLAP",
 			"Ammocan_100Rnd_127x99_mag_SLAP_Tracer_Red",
-			"Ammocan_130Rnd_338_mag"
+			"Ammocan_130Rnd_338_mag",
+			"Ammocan_RHS_48Rnd_40mm_MK19_M430A1",
+			"Ammocan_RHS_48Rnd_40mm_MK19_M1001",
+			"Ammocan_96Rnd_40mm_G_belt",
+			"Ammocan_RHS_48Rnd_40mm_MK19_M1001"
 		};
 	};
 };
@@ -222,9 +226,44 @@ class CfgMagazines
 	
 	class Ammocan_130Rnd_338_mag:ammocan_base
  	{
+ 		//Vanilla
 		displayName = " Ammocan - 130x .338 Norma Magnum";
 		descriptionShort = "Ammocan<br>Caliber: .338 Norma Magnum<br>130 Rounds";
 		magazines[] = {"130Rnd_338_Mag"};
+	};
+	
+	// 48x 40mm =====================================================================================================
+	
+	class Ammocan_RHS_48Rnd_40mm_MK19_M430A1:ammocan_base
+ 	{
+ 		//RHS
+		displayName = " Ammocan - 48x 40mm M430A1 HEDP";
+		descriptionShort = "Ammocan<br>Caliber: 40mm M430A1 HEDP<br>48 Rounds";
+		magazines[] = {"RHS_48Rnd_40mm_MK19_M430A1"};
+	};
+	class Ammocan_RHS_48Rnd_40mm_MK19_M1001:ammocan_base
+ 	{
+ 		//RHS
+		displayName = " Ammocan - 48x 40mm M1001 Canister";
+		descriptionShort = "Ammocan<br>Caliber: 40mm M1001 Canister<br>48 Rounds";
+		magazines[] = {"RHS_48Rnd_40mm_MK19_M1001"};
+	};
+	
+	
+	class Ammocan_96Rnd_40mm_G_belt:ammocan_base
+ 	{
+ 		//Vanilla
+ 		//RHS
+		displayName = " Ammocan - 96x 40mm M430A1 HEDP";
+		descriptionShort = "Ammocan<br>Caliber: 40mm M430A1 HEDP<br>96 Rounds";
+		magazines[] = {"RHS_96Rnd_40mm_MK19_M430A1", "96Rnd_40mm_G_belt"};
+	};
+	class Ammocan_RHS_48Rnd_40mm_MK19_M1001:ammocan_base
+ 	{
+ 		//RHS
+		displayName = " Ammocan - 96x 40mm M1001 Canister";
+		descriptionShort = "Ammocan<br>Caliber: 40mm M1001 Canister<br>96 Rounds";
+		magazines[] = {"RHS_96Rnd_40mm_MK19_M1001",};
 	};
  };
 

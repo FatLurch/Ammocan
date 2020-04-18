@@ -1,6 +1,6 @@
 params ["_ammoType"];
 
-_ammocans = ["Ammocan_200Rnd_127x99_mag","Ammocan_200Rnd_127x99_mag_Tracer_Red","Ammocan_200Rnd_127x99_mag_Tracer_Yellow","Ammocan_200Rnd_127x99_mag_Tracer_Green","Ammocan_200Rnd_127x99_mag_SLAP","Ammocan_200Rnd_127x99_mag_SLAP_Tracer_Red","Ammocan_100Rnd_127x99_mag","Ammocan_100Rnd_127x99_mag_Tracer_Red","Ammocan_100Rnd_127x99_mag_Tracer_Yellow","Ammocan_100Rnd_127x99_mag_Tracer_Green","Ammocan_100Rnd_127x99_mag_SLAP","Ammocan_100Rnd_127x99_mag_SLAP_Tracer_Red","Ammocan_130Rnd_338_mag"];
+_ammocans = ["Ammocan_200Rnd_127x99_mag","Ammocan_200Rnd_127x99_mag_Tracer_Red","Ammocan_200Rnd_127x99_mag_Tracer_Yellow","Ammocan_200Rnd_127x99_mag_Tracer_Green","Ammocan_200Rnd_127x99_mag_SLAP","Ammocan_200Rnd_127x99_mag_SLAP_Tracer_Red","Ammocan_100Rnd_127x99_mag","Ammocan_100Rnd_127x99_mag_Tracer_Red","Ammocan_100Rnd_127x99_mag_Tracer_Yellow","Ammocan_100Rnd_127x99_mag_Tracer_Green","Ammocan_100Rnd_127x99_mag_SLAP","Ammocan_100Rnd_127x99_mag_SLAP_Tracer_Red","Ammocan_130Rnd_338_mag","Ammocan_RHS_48Rnd_40mm_MK19_M430A1","Ammocan_RHS_48Rnd_40mm_MK19_M1001","Ammocan_96Rnd_40mm_G_belt","Ammocan_RHS_48Rnd_40mm_MK19_M1001"];
 
 _return = "";
 
@@ -12,3 +12,5 @@ _return = "";
 }forEach _ammocans;
 
 _return
+
+
