@@ -14,7 +14,7 @@ _turretWeapons = [];
 	{			
 		If(_vehicle canAdd _foundType) then
 		{
-			diag_log format["### Ammocan Debug  - Converting ammo"];
+			diag_log format["### Ammocan Debug  - Converting ammo in vehicle %1, foundType: %2,  _magazine: %3", _vehicle, _foundType, _magazine];
 			_vehicle addMagazineCargoGlobal [_foundType, 1];
 			_vehicle removeMagazinesTurret [_magazine,_turretIndex];
 			_vehicle addMagazineTurret [_magazine,_turretIndex];
