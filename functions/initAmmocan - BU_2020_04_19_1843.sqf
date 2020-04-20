@@ -66,8 +66,7 @@ _vehicle addEventHandler ["ContainerClosed", {
 			{				
 				_vehMags = [_weapon] call bis_fnc_compatibleMagazines;		//ammo the vehicle weapon can accept
 				_vehMags = [_vehMags] call fatLurch_fnc_toLowerArray;		//Convert all string elements to lowercase
-				_vehCargoMags = magazineCargo _container;	//Get an array of the magazines in the vehicle
-
+				_vehCargoMags = magazineCargo _container;	//Get an array of the magazines in the vehicle		
 				//Go through each of the magazines (ammocans) in the vehicle and see if they'll work with the weapon being fired
 				{			
 					_ammocan = toLower(getText(configFile >> "CfgMagazines" >> _x >> "ammocan"));	//Retrieve unique ammocan parameter (will only be "true" on ammocans)
@@ -80,10 +79,6 @@ _vehicle addEventHandler ["ContainerClosed", {
 						//If a compatible ammocan is found
 						if(count _matchMagazine > 0 && !_found) then
 						{	
-							diag_log format["## Container Closed EH - container: %1", _container];
-							diag_log format["## Container Closed EH - found: %1", _found];
-							
-							
 							_container addMagazineTurret [_matchMagazine select 0, _turretPath];			//Add the ammo to the turret
 							[_container, _x]call fatLurch_fnc_removeMagazine;							//Remove ammocan from vehicle inventory	
 							_found = true;															//Prevents numerous cans from being loaded into the turret at once

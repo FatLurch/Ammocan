@@ -26,6 +26,7 @@ class CfgAddons
 	};
 };
 
+
 class CfgFunctions
 {
 	class fatLurch
@@ -49,6 +50,21 @@ class CfgFunctions
 			
 			//[_vehicle]call fatLurch_fnc_convertTurretAmmo;
 			class convertTurretAmmo {file = "Ammocan\functions\convertTurretAmmo.sqf";};
+			
+			//[_vehicle, _turretPath]call fatLurch_fnc_getTurretAmmo;
+			class getTurretAmmo {file = "Ammocan\functions\getTurretAmmo.sqf";};
+			
+			//[_vehicle, _turretPath]call fatLurch_fnc_nonEmptyMagsTurret;
+			class nonEmptyMagsTurret {file = "Ammocan\functions\nonEmptyMagsTurret.sqf";};
+			
+			//[_vehicle, _turretPath]call fatLurch_fnc_getTurretWeapons;
+			class getTurretWeapons {file = "Ammocan\functions\getTurretWeapons.sqf";};
+			
+			//[_vehicle, _turretPath, _weapon]call fatLurch_fnc_getWeaponAmmo;
+			class getWeaponAmmo {file = "Ammocan\functions\getWeaponAmmo.sqf";};
+			
+			//[_array]call fatLurch_fnc_toLowerArray;
+			class toLowerArray {file = "Ammocan\functions\toLowerArray.sqf";};
 		};
 	};
 };
@@ -100,7 +116,13 @@ class cfgWeapons
 			"Ammocan_RHS_48Rnd_40mm_MK19_M430A1",
 			"Ammocan_RHS_48Rnd_40mm_MK19_M1001",
 			"Ammocan_96Rnd_40mm_G_belt",
-			"Ammocan_RHS_48Rnd_40mm_MK19_M1001"
+			"Ammocan_RHS_48Rnd_40mm_MK19_M1001",
+			"Ammocan_rhs_mag_762x51_M240_200_M80",
+			"Ammocan_rhs_mag_762x51_M240_200",
+			"Ammocan_rhs_mag_400rnd_127x99_mag",
+			"Ammocan_400Rnd_127x99_mag_Tracer_Red", 
+			"Ammocan_400Rnd_127x99_mag_SLAP",
+			"Ammocan_400Rnd_127x99_mag_SLAP_Tracer_Red"
 		};
 	};
 };
@@ -117,6 +139,40 @@ class CfgMagazines
  		picture = "\Ammocan\data\ammocan.paa";
  		model = "\A3\Structures_F_EPB\Items\Military\Ammobox_rounds_F.p3d";
  	};
+ 	
+ 	 // 400x 12.7x99 NATO aka .50 BMG =====================================================================================================
+ 	
+ 	class Ammocan_rhs_mag_400rnd_127x99_mag:ammocan_base
+ 	{
+ 		//RHS
+		displayName = " Ammocan - 400x .50 Cal (12.7x99) M2 Ball";
+		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm<br>400 Rounds";
+		magazines[] = {"rhs_mag_400rnd_127x99_mag"};
+	};
+ 	
+ 	class Ammocan_400Rnd_127x99_mag_Tracer_Red:ammocan_base
+ 	{
+ 		//RHS
+		displayName = " Ammocan - 400x .50 Cal (12.7x99) M2 Red Tracer";
+		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Red Tracer<br>400 Rounds";
+		magazines[] = {"rhs_mag_400rnd_127x99_mag_Tracer_Red"};
+	};
+	
+	class Ammocan_400Rnd_127x99_mag_SLAP:ammocan_base
+ 	{
+ 		//RHS
+		displayName = " Ammocan - 400x .50 Cal (12.7x99) M903 SLAP";
+		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm M903 SLAP<br>400 Rounds";
+		magazines[] = {"rhs_mag_400rnd_127x99_SLAP_mag"};
+	};
+
+	class Ammocan_400Rnd_127x99_mag_SLAP_Tracer_Red:ammocan_base
+ 	{
+ 		//RHS
+		displayName = " Ammocan - 400x .50 Cal (12.7x99) M903 SLAP Red Tracer";
+		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm M903 SLAP Red Tracer<br>400 Rounds";
+		magazines[] = {"rhs_mag_400rnd_127x99_SLAP_mag_Tracer_Red"};
+	};
  	
  	// 200x 12.7x99 NATO aka .50 BMG =====================================================================================================
  	
@@ -264,6 +320,24 @@ class CfgMagazines
 		displayName = " Ammocan - 96x 40mm M1001 Canister";
 		descriptionShort = "Ammocan<br>Caliber: 40mm M1001 Canister<br>96 Rounds";
 		magazines[] = {"RHS_96Rnd_40mm_MK19_M1001",};
+	};
+	
+	// 200x 7.62x51 NATO =====================================================================================================
+
+	class Ammocan_rhs_mag_762x51_M240_200:ammocan_base
+ 	{
+ 		//RHS
+		displayName = " Ammocan - 200x 7.62x51mm M80A1 EPR";
+		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm M80A1 EPR<br>200 Rounds";
+		magazines[] = {"rhs_mag_762x51_M240_200"};
+	};
+	
+	class Ammocan_rhs_mag_762x51_M240_200_M80:ammocan_base
+ 	{
+ 		//RHS
+		displayName = " Ammocan - 200x 7.62x51mm M80 Ball";
+		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm M80 Ball<br>200 Rounds";
+		magazines[] = {"rhs_mag_762x51_M240_200_M80"};
 	};
  };
 

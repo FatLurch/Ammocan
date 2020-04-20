@@ -1,5 +1,6 @@
 params["_vehicle"];
 
+
 sleep 1;
 
 _turretWeapons = [];
@@ -7,10 +8,11 @@ _turretWeapons = [];
 {
 	_magazine = _x select 0;
 	_turretIndex = _x select 1;
+	_ammo = _x select 2;
 	_count = count(_vehicle magazinesTurret _turretIndex);
 	_foundType =[_magazine] call fatLurch_fnc_findAmmocanType;
 	
-	if(_foundType != "") then
+	if(_foundType != "" && _ammo > 0) then
 	{			
 		If(_vehicle canAdd _foundType) then
 		{
