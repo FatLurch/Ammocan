@@ -92,14 +92,14 @@ class Extended_Init_EventHandlers
 };
 
 
-
-// ###### IMPORTANT! In order for an ammocan type to show up in rifle magazines it must be lsited in the array below. Luckily the rifle can't fire any of these rounds
+//##############################################################################################
+// ###### IMPORTANT! In order for an ammocan type to show up in rifle magazines it must be listed in the array below
+//##############################################################################################
 class cfgWeapons
 {
 	class Rifle_Base_F;
 	class ammocan_fake_gun:Rifle_Base_F
 	{
-		// DON'T FORGET TO UPDATE findAmmocanType.sqf!!!!!!!!!!!!!!
 		magazines[] = 
 		{
 			"Ammocan_200Rnd_127x99_mag",
