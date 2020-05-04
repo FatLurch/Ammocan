@@ -129,6 +129,33 @@ class cfgWeapons
 	};
 };
 
+class CfgModels
+{
+	class Land_FireExtinguisher_F;
+	class Test_thing:Land_FireExtinguisher_F
+	{
+		//sectionsInherit = "Car"; // Inherit all sections from class Car.
+		// Add new section.
+		sections[] = {"Marking"};
+	};
+};
+
+class cfgVehicles
+{	
+	class Land_FireExtinguisher_F;
+	class Test_thing:Land_FireExtinguisher_F
+	{
+ 		ammocan = "true";
+ 		ammo = "";
+ 		author = "Fat_Lurch";
+ 		displayName = "M2A1 Ammocan";
+ 		picture = "Ammocan\data\ammocan.paa";
+ 		model = "Ammocan\M2A1.p3d";
+ 		hiddenSelections[] = {};								// List of model selections which can be changed with hiddenSelectionTextures[]
+		hiddenSelectionsTextures[] = {"Ammocan\data\Marking_100x_M2.paa"};	// The textures for the selections defined above.
+	};
+};
+
 class CfgMagazines
  {
  	// Base Config Setup #############################################################################################
@@ -138,7 +165,7 @@ class CfgMagazines
  		ammocan = "true";
  		ammo = "";
  		author = "Fat_Lurch";
- 		picture = "\Ammocan\data\ammocan.paa";
+ 		picture = "Ammocan\data\ammocan.paa";
  		model = "\A3\Structures_F_EPB\Items\Military\Ammobox_rounds_F.p3d";
  	};
  	

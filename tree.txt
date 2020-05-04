@@ -1,0 +1,44 @@
+Folder PATH listing for volume Storage
+Volume serial number is 40BA-944D
+H:.
+|   .gitattributes
+|   config.cpp
+|   LICENSE
+|   M2A1.p3d
+|   Marking_Template.xcf
+|   README.md
+|   tree.txt
+|   
++---data
+|       20200413_214726.jpg
+|       ammocan.paa
+|       crap_ammocan.paa
+|       Crap_ammocan.png
+|       crap_ammocan_256.paa
+|       Crap_ammocan_256.png
+|       grid.paa
+|       grid.png
+|       _Ammocan_Model_Reference.png
+|       
++---functions
+|       convertTurretAmmo.sqf
+|       findAmmocanType.sqf
+|       getTurretAmmo.sqf
+|       getTurretIndex.sqf
+|       getTurretWeapons.sqf
+|       getWeaponAmmo.sqf
+|       initAmmocan - BU_2020_04_19_1843.sqf
+|       initAmmocan.sqf
+|       nonEmptyMagsTurret.sqf
+|       removeEmptyMagsTurret.sqf
+|       removeMagazine.sqf
+|       toLowerArray.sqf
+|       
+\---textures
+        M2A1.rvmat
+        M2A1_as.paa
+        M2A1_co.paa
+        M2A1_nohq.paa
+        M2A1_smdi.paa
+        Marking_100x_M2.paa
+        
