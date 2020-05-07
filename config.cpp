@@ -283,7 +283,7 @@ class CfgMagazines
 		magazines[] = {"100Rnd_127x99_mag_Tracer_Yellow"};
 	};
 		
-	class Ammocan_200Rnd_127x99_mag_Tracer_Green:ammocan_base
+	class Ammocan_100Rnd_127x99_mag_Tracer_Green:ammocan_base
  	{
  		//Vanilla
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Green Tracer";
@@ -343,7 +343,7 @@ class CfgMagazines
 		descriptionShort = "Ammocan<br>Caliber: 40mm M430A1 HEDP<br>96 Rounds";
 		magazines[] = {"RHS_96Rnd_40mm_MK19_M430A1", "96Rnd_40mm_G_belt"};
 	};
-	class Ammocan_RHS_48Rnd_40mm_MK19_M1001:ammocan_base
+	class Ammocan_RHS_96Rnd_40mm_MK19_M1001:ammocan_base
  	{
  		//RHS
 		displayName = " Ammocan - 96x 40mm M1001 Canister";
