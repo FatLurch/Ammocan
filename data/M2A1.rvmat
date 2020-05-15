@@ -23,12 +23,14 @@ class Stage3
 };
 class Stage4
 {
-	texture="Ammocan\data\M2A1_as.paa";
+	//texture="Ammocan\data\M2A1_as.paa";
+	texture="#(argb,8,8,3)color(1.0,1.0,1.0,1.0,AS)";
 	uvSource="tex";
 };
 class Stage5
 {
-	texture="Ammocan\data\M2A1_smdi.paa";
+	//texture="Ammocan\data\M2A1_smdi.paa";
+	texture="#(argb,8,8,3)color(1,0,1,0,SMDI)";
 	uvSource="tex";
 };
 class Stage6
