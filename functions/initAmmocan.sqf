@@ -29,7 +29,7 @@ _vehicle addEventHandler ["Fired", {
 				//If there the ammo types are compatible
 				if(count _matchMagazine > 0 && !_found) then
 				{
-					diag_log format ["### Ammocan Debug - Processing ammocan: %1  Adding magazine %2 to vehicle %3", _x, _matchMagazine,_unit];
+					diag_log format ["### Ammocan Debug - initAmmocan.sqf - Fired EH - Processing ammocan: %1  Adding magazine %2 to vehicle %3", _x, _matchMagazine,_unit];
 					_unit addMagazineTurret [_matchMagazine select 0,_turretIndex];			//Add the ammo to the turret
 					[_unit, _x]call fatLurch_fnc_removeMagazine;							//Remove ammocan from vehicle inventory
 					_found = true;														//Prevents numerous canms from being loaded into the turret at once
@@ -80,8 +80,8 @@ _vehicle addEventHandler ["ContainerClosed", {
 						//If a compatible ammocan is found
 						if(count _matchMagazine > 0 && !_found) then
 						{	
-							diag_log format["## Container Closed EH - container: %1", _container];
-							diag_log format["## Container Closed EH - found: %1", _found];
+							diag_log format["### Ammocan Debug - initAmmocan.sqf - Container Closed EH - container: %1", _container];
+							diag_log format["### Ammocan Debug - initAmmocan.sqf - Container Closed EH - found: %1", _found];
 							
 							
 							_container addMagazineTurret [_matchMagazine select 0, _turretPath];			//Add the ammo to the turret
