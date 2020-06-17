@@ -1,7 +1,6 @@
 params["_vehicle"];
 
-
-sleep 1;
+sleep 2;		//Was 1 second - changed to 2 in hopes of alleviating Zeus issue
 
 _turretWeapons = [];
 
@@ -18,7 +17,7 @@ _turretWeapons = [];
 		{
 			diag_log format["### Ammocan Debug  - convertTurretAmmo.sqf - Converting ammo in vehicle %1, foundType: %2,  _magazine: %3", _vehicle, _foundType, _magazine];
 			_vehicle addMagazineCargoGlobal [_foundType, 1];
-			_vehicle removeMagazinesTurret [_magazine,_turretIndex];
+			_vehicle removeMagazinesTurret [_magazine,_turretIndex];		//This isn't working on Zeus spawned vehicles
 			_vehicle addMagazineTurret [_magazine,_turretIndex];
 		};
 	};
