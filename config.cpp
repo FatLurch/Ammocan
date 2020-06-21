@@ -139,8 +139,8 @@ class cfgVehicles
  		ammo = "";
  		author = "Fat_Lurch";
  		displayName = "M2A1 Ammocan";
- 		picture = "Ammocan\data\ammocan.paa";
- 		model = "Ammocan\M2A1.p3d";
+ 		picture = "\Ammocan\data\ammocan.paa";
+ 		model = "\Ammocan\M2A1.p3d";
  		hiddenSelections[] = {"camo"};								// List of model selections which can be changed with hiddenSelectionTextures[]
 		hiddenSelectionsTextures[] = {"Ammocan\data\Marking_100x_M2.paa"};	// The textures for the selections defined above.
 	};
@@ -155,7 +155,7 @@ class CfgMagazines
  		ammocan = "true";
  		ammo = "";
  		author = "Fat_Lurch";
- 		picture = "Ammocan\data\ammocan.paa";
+ 		picture = "\Ammocan\data\ammocan.paa";
  		model = "\A3\Structures_F_EPB\Items\Military\Ammobox_rounds_F.p3d";
  	};
  	
