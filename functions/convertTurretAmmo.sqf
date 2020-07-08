@@ -17,9 +17,7 @@ _turretWeapons = [];
 		{
 			diag_log format["### Ammocan Debug  - convertTurretAmmo.sqf - Converting ammo in vehicle %1, foundType: %2,  _magazine: %3", _vehicle, _foundType, _magazine];
 			_vehicle addMagazineCargoGlobal [_foundType, 1];
-			//_vehicle removeMagazinesTurret [_magazine,_turretIndex];		//This isn't working on Zeus spawned vehicles
 			[_vehicle, [_magazine,_turretIndex]] remoteExec ["removeMagazinesTurret", _vehicle]; 	
-			//_vehicle addMagazineTurret [_magazine,_turretIndex]; //Does work in MP
 			[_vehicle, [_magazine,_turretIndex]] remoteExec ["addMagazineTurret", _vehicle]; 	
 		};
 	};
