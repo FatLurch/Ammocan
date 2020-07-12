@@ -156,7 +156,8 @@ class CfgMagazines
  		ammo = "";
  		author = "Fat_Lurch";
  		picture = "\Ammocan\data\ammocan.paa";
- 		model = "\A3\Structures_F_EPB\Items\Military\Ammobox_rounds_F.p3d";
+ 		//model = "\A3\Structures_F_EPB\Items\Military\Ammobox_rounds_F.p3d";
+ 		model = "\Ammocan\M2A1.p3d";
  	};
  	
  	 // 400x 12.7x99 NATO aka .50 BMG =====================================================================================================
@@ -251,34 +252,46 @@ class CfgMagazines
  	{
  		//Vanilla
  		//RHS
+ 		//CUP
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Ball";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm<br>100 Rounds";
-		magazines[] = {"100Rnd_127x99_mag", "rhs_mag_100rnd_127x99_mag"};
+		magazines[] = {"100Rnd_127x99_mag", "rhs_mag_100rnd_127x99_mag","CUP_100Rnd_127x99_M"};
 	};
  	
  	class Ammocan_100Rnd_127x99_mag_Tracer_Red:ammocan_base
  	{
  		//Vanilla
  		//RHS
+ 		//CUP
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Red Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Red Tracer<br>100 Rounds";
-		magazines[] = {"100Rnd_127x99_mag_Tracer_Red", "rhs_mag_100rnd_127x99_mag_Tracer_Red"};
+		magazines[] = {"100Rnd_127x99_mag_Tracer_Red", "rhs_mag_100rnd_127x99_mag_Tracer_Red","CUP_100Rnd_TE4_Red_Tracer_127x99_M"};
 	};
 	
 	 class Ammocan_100Rnd_127x99_mag_Tracer_Yellow:ammocan_base
  	{
  		//Vanilla
+ 		//CUP
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Yellow Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Yellow Tracer<br>100 Rounds";
-		magazines[] = {"100Rnd_127x99_mag_Tracer_Yellow"};
+		magazines[] = {"100Rnd_127x99_mag_Tracer_Yellow", "CUP_100Rnd_TE4_Yellow_Tracer_127x99_M"};
 	};
 		
 	class Ammocan_100Rnd_127x99_mag_Tracer_Green:ammocan_base
  	{
  		//Vanilla
+ 		//CUP
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Green Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Green Tracer<br>100 Rounds";
-		magazines[] = {"100Rnd_127x99_mag_Tracer_Green"};
+		magazines[] = {"100Rnd_127x99_mag_Tracer_Green","CUP_100Rnd_TE4_Green_Tracer_127x99_M"};
+	};
+	
+	class Ammocan_100Rnd_127x99_mag_Tracer_White:ammocan_base
+ 	{
+ 		//CUP
+		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 White Tracer";
+		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm White Tracer<br>100 Rounds";
+		magazines[] = {"CUP_100Rnd_TE4_White_Tracer_127x99_M"};
 	};
 	
 	class Ammocan_100Rnd_127x99_mag_SLAP:ammocan_base
