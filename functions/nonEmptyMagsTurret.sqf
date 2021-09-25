@@ -12,8 +12,3 @@ _count = 0;
 }forEach magazinesAllTurrets _vehicle;
 
 _count
-
-
-//_magazines = [vehicle player] call bis_fnc_compatibleMagazines;
-
-//getArray ([cursorTarget, [0,0]] call BIS_fnc_turretConfig >> "weapons");

@@ -1,3 +1,5 @@
+//This function calls for ammo conversion and adds event handlers for a particular vehicle
+
 params["_vehicle"];
 
 _turretIndex = [];
@@ -32,7 +34,7 @@ _vehicle addEventHandler ["Fired", {
 					diag_log format ["### Ammocan Debug - initAmmocan.sqf - Fired EH - Processing ammocan: %1  Adding magazine %2 to vehicle %3", _x, _matchMagazine,_unit];
 					_unit addMagazineTurret [_matchMagazine select 0,_turretIndex];			//Add the ammo to the turret
 					[_unit, _x]call fatLurch_fnc_removeMagazine;							//Remove ammocan from vehicle inventory
-					_found = true;														//Prevents numerous canms from being loaded into the turret at once
+					_found = true;														//Prevents numerous cans from being loaded into the turret at once
 				};
 			};
 		}forEach _vehCargoMags;

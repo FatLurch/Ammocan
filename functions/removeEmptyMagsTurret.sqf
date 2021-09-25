@@ -1,3 +1,5 @@
+//This function prunes empty magazines from a vehicle's inventory
+
 params["_vehicle"];
 
 _emptyMag = false;

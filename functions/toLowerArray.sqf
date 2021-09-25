@@ -1,4 +1,4 @@
-//Converts all string elements of an array to lwoercase text
+//Converts all string elements of an array to lowercase text
 params["_inputArray"];
 
 {

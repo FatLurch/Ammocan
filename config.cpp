@@ -124,7 +124,15 @@ class cfgWeapons
 			"Ammocan_rhs_mag_400rnd_127x99_mag",
 			"Ammocan_400Rnd_127x99_mag_Tracer_Red", 
 			"Ammocan_400Rnd_127x99_mag_SLAP",
-			"Ammocan_400Rnd_127x99_mag_SLAP_Tracer_Red"
+			"Ammocan_400Rnd_127x99_mag_SLAP_Tracer_Red", 
+			"Ammocan_rhs_mag_TOW",
+			"Ammocan_rhs_mag_TOWB",
+			"Ammocan_rhs_mag_ITOW",
+			"Ammocan_rhs_mag_TOW2",
+			"Ammocan_rhs_mag_TOW2A",
+			"Ammocan_rhs_mag_TOW2b",
+			"Ammocan_rhs_mag_TOW2b_aero",
+			"Ammocan_rhs_mag_TOW2bb"
 		};
 	};
 };
@@ -144,6 +152,7 @@ class cfgVehicles
  		hiddenSelections[] = {"camo"};								// List of model selections which can be changed with hiddenSelectionTextures[]
 		hiddenSelectionsTextures[] = {"Ammocan\data\Marking_100x_M2.paa"};	// The textures for the selections defined above.
 	};
+	
 };
 
 class CfgMagazines
@@ -158,6 +167,7 @@ class CfgMagazines
  		picture = "\Ammocan\data\ammocan.paa";
  		//model = "\A3\Structures_F_EPB\Items\Military\Ammobox_rounds_F.p3d";
  		model = "\Ammocan\M2A1.p3d";
+ 		mass = 50;
  	};
  	
  	 // 400x 12.7x99 NATO aka .50 BMG =====================================================================================================
@@ -371,6 +381,81 @@ class CfgMagazines
 		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm M80 Ball<br>200 Rounds";
 		magazines[] = {"rhs_mag_762x51_M240_200_M80"};
 	};
+	
+	// 1x TOW Missile =====================================================================================================
+
+	class Ammocan_rhs_mag_TOW:ammocan_base
+ 	{
+ 		//RHS
+		displayName = "Ammocan - BGM-71A TOW Missile";
+		descriptionShort = "Ammocan<br>BGM-71A";
+		magazines[] = {"rhs_mag_TOW"};
+		mass = 80;
+	};
+	
+	class Ammocan_rhs_mag_TOWB:ammocan_base
+ 	{
+ 		//RHS
+		displayName = "Ammocan - BGM-71B TOW Missile";
+		descriptionShort = "Ammocan<br>BGM-71B";
+		magazines[] = {"rhs_mag_TOWB"};
+		mass = 80;
+	};
+	
+	class Ammocan_rhs_mag_ITOW:ammocan_base
+ 	{
+ 		//RHS
+		displayName = "Ammocan - BGM-71C ITOW Missile";
+		descriptionShort = "Ammocan<br>BGM-71C";
+		magazines[] = {"rhs_mag_ITOW"};
+		mass = 80;
+	};
+	
+	class Ammocan_rhs_mag_TOW2:ammocan_base
+ 	{
+ 		//RHS
+		displayName = "Ammocan - BGM-71D TOW-2 Missile";
+		descriptionShort = "Ammocan<br>BGM-71D";
+		magazines[] = {"rhs_mag_TOW2"};
+		mass = 80;
+	};
+
+	class Ammocan_rhs_mag_TOW2A:ammocan_base
+ 	{
+ 		//RHS
+		displayName = "Ammocan - BGM-71E TOW-2A Missile";
+		descriptionShort = "Ammocan<br>BGM-71E";
+		magazines[] = {"rhs_mag_TOW2a"};
+		mass = 80;
+	};
+
+	class Ammocan_rhs_mag_TOW2b:ammocan_base
+ 	{
+ 		//RHS
+		displayName = "Ammocan - BGM-71F TOW-2B Missile";
+		descriptionShort = "Ammocan<br>BGM-71F";
+		magazines[] = {"rhs_mag_TOW2b"};
+		mass = 80;
+	};
+	
+	class Ammocan_rhs_mag_TOW2b_aero:ammocan_base
+ 	{
+ 		//RHS
+		displayName = "Ammocan - BGM-71F-3 TOW-2B Aero Missile";
+		descriptionShort = "Ammocan<br>BGM-71F-3";
+		magazines[] = {"rhs_mag_TOW2b_aero"};
+		mass = 80;
+	};
+
+	class Ammocan_rhs_mag_TOW2bb:ammocan_base
+ 	{
+ 		//RHS
+		displayName = "Ammocan - BGM-71H Bunker Buster Missile";
+		descriptionShort = "Ammocan<br>BGM-71H ";
+		magazines[] = {"rhs_mag_TOW2bb"};
+		mass = 80;
+	};
+
  };
 
 
