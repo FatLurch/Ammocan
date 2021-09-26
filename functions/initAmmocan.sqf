@@ -16,7 +16,8 @@ _vehicle addEventHandler ["Fired", {
 	
 	if(_ammo == 0) then
 	{	
-		_ai = !(isPlayer gunner _unit);
+		//_ai = !(isPlayer gunner _unit);
+		_ai = !(isPlayer (_vehicle turretUnit _turretIndex));
 		
 		if(_ai) then
 		{

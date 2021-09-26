@@ -35,10 +35,7 @@ class CfgFunctions
 		{
 			//[_unit, _weapon]call fatLurch_fnc_getTurretIndex;
 			class getTurretIndex {file = "Ammocan\functions\getTurretIndex.sqf";};
-			
-			//[_container, _magazine]call fatLurch_fnc_removeMagazine;
-			class removeMagazine {file = "Ammocan\functions\removeMagazine.sqf";};
-			
+						
 			//[_vehicle]call fatLurch_fnc_initAmmocan;
 			class initAmmocan {file = "Ammocan\functions\initAmmocan.sqf";};
 			
