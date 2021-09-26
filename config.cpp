@@ -92,9 +92,9 @@ class Extended_Init_EventHandlers
 };
 
 
-//##############################################################################################
-// ###### IMPORTANT! In order for an ammocan type to show up in rifle magazines it must be listed in the array below
-//##############################################################################################
+// ##############################################################################################
+// ######  IMPORTANT! In order for an ammocan type to show up in rifle magazines it must be listed in the array below
+// ##############################################################################################
 class cfgWeapons
 {
 	class Rifle_Base_F;
@@ -132,7 +132,9 @@ class cfgWeapons
 			"Ammocan_rhs_mag_TOW2A",
 			"Ammocan_rhs_mag_TOW2b",
 			"Ammocan_rhs_mag_TOW2b_aero",
-			"Ammocan_rhs_mag_TOW2bb"
+			"Ammocan_rhs_mag_TOW2bb",
+			"Ammocan_2000Rnd_762x51_Belt_T_Red",
+			"Ammocan_1Rnd_GAT_missiles"
 		};
 	};
 };
@@ -382,6 +384,20 @@ class CfgMagazines
 		magazines[] = {"rhs_mag_762x51_M240_200_M80"};
 	};
 	
+	
+	// 2000x 7.62x51 NATO =================================================================================================
+	
+	
+	class Ammocan_2000Rnd_762x51_Belt_T_Red:ammocan_base
+ 	{
+ 		//Vanilla
+ 		//CUP (used in M134)
+		displayName = " Ammocan - 2000x 7.62x51mm Red Tracer";
+		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm Red Tracer<br>2000 Rounds";
+		magazines[] = {"CUP_2000Rnd_TE1_Red_Tracer_762x51_M134_M","2000Rnd_762x51_Belt_T_Red"};
+		mass = 150;
+	};
+	
 	// 1x TOW Missile =====================================================================================================
 
 	class Ammocan_rhs_mag_TOW:ammocan_base
@@ -453,6 +469,18 @@ class CfgMagazines
 		displayName = "Ammocan - BGM-71H Bunker Buster Missile";
 		descriptionShort = "Ammocan<br>BGM-71H ";
 		magazines[] = {"rhs_mag_TOW2bb"};
+		mass = 80;
+	};
+	
+	
+	// 1x AT Missile =====================================================================================================
+
+	class Ammocan_1Rnd_GAT_missiles:ammocan_base
+ 	{
+ 		//Vanilla
+		displayName = "Ammocan - 1x Titan AT Missile";
+		descriptionShort = "Ammocan<br>Titan AT";
+		magazines[] = {"1Rnd_GAT_missiles"};
 		mass = 80;
 	};
 
