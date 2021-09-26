@@ -15,7 +15,7 @@ _vehicle addEventHandler ["Fired", {
 	_ammo = [_unit, _turretIndex, _weapon] call fatLurch_fnc_getWeaponAmmo;	//BIS functions for getting ammo from a (secondary) turret are bugged
 	
 	//Push ammo into the turret at 1 round remaining, otherwise the various turret types don't reload automatically, even when commanded to with "loadMagazine" and "reload"
-	if(_ammo ==1) then
+	if(_ammo ==1 && false) then
 	{	
 		_vehCargoMags = magazineCargo _unit;	//Get an array of the magazines in the vehicle
 		_vehMags = getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines");	//get an array of the types of magazines the weapon can use
@@ -41,6 +41,7 @@ _vehicle addEventHandler ["Fired", {
 	};
 }];
 
+/*
 _vehicle addEventHandler ["ContainerClosed", {
 	//Handle condition where weapon goes Winchester and later someone loads ammo into the vehicle
 	
@@ -102,3 +103,5 @@ _vehicle addEventHandler ["ContainerClosed", {
 		
 	}forEach allTurrets _container;	
 }];
+
+*/

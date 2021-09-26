@@ -65,6 +65,12 @@ class CfgFunctions
 			
 			//[_array]call fatLurch_fnc_toLowerArray;
 			class toLowerArray {file = "Ammocan\functions\toLowerArray.sqf";};
+			
+			//[_vehicle, _turretIndex, _preferredAmmoType (optional)] call fatLurch_fnc_loadAmmoFromInventory;
+			class loadAmmoFromInventory {file = "Ammocan\functions\loadAmmoFromInventory.sqf";};
+			
+			//[_vehicle, _magType, _ammoCanType, _turretIndex] call fatLurch_fnc_loadAmmo;
+			class loadAmmo {file = "Ammocan\functions\loadAmmo.sqf";};
 		};
 	};
 };
