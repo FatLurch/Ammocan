@@ -19,7 +19,7 @@ if(_preferredMagType != "") then
 		{			
 			_magArray = getArray (configFile >> "CfgMagazines" >> _x >> "magazines");	//Get an array of which ammo types the ammocan can supply
 							
-			//If preferred ammo if found, load it
+			//If preferred ammo is found, load it
 			if((_magArray findIf { _x == _preferredMagType; } != -1) && !_found) then
 			{			
 				[_vehicle, _weapon,  _preferredMagType, _x, _turretIndex] call fatLurch_fnc_loadAmmo;	//Load the preferred ammo

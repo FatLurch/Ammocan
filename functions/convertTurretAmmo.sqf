@@ -9,8 +9,6 @@ _firstHit = true;
 _turretWeapons = [];
 
 {
-
-	
 	_magazine = _x select 0;
 	_turretIndex = _x select 1;
 	_ammo = _x select 2;
