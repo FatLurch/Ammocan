@@ -19,6 +19,8 @@ _vehicle addEventHandler ["Fired", {
 		//_ai = !(isPlayer gunner _unit);
 		_ai = !(isPlayer (_vehicle turretUnit _turretIndex));
 		
+		if(missionnamespace getVariable "Fat_Lurch_Ammocan_Hint") then {hint "Press R to reload the turret";};
+		
 		if(_ai) then
 		{
 			[_unit, _turretIndex, _magazine] call fatLurch_fnc_loadAmmoFromInventory;
