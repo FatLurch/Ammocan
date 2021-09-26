@@ -5,7 +5,7 @@ class CfgPatches
  		units[] = {};	
  		weapons[] = {};
  		requiredVersion = 0.1;
- 		requiredAddons[] = {"A3_Weapons_F_Mark"};	
+ 		requiredAddons[] = {"A3_Weapons_F_Mark", "cba_main"};	
 		version="0.1";
 		author="Fat_Lurch";
  	};
@@ -65,6 +65,21 @@ class CfgFunctions
 			
 			//[_array]call fatLurch_fnc_toLowerArray;
 			class toLowerArray {file = "Ammocan\functions\toLowerArray.sqf";};
+			
+			//[_vehicle, _turretIndex, _preferredAmmoType (optional)] call fatLurch_fnc_loadAmmoFromInventory;
+			class loadAmmoFromInventory {file = "Ammocan\functions\loadAmmoFromInventory.sqf";};
+			
+			//[_vehicle, _magType, _ammoCanType, _turretIndex] call fatLurch_fnc_loadAmmo;
+			class loadAmmo {file = "Ammocan\functions\loadAmmo.sqf";};
+			
+			//[player] call fatLurch_fnc_reload;
+			class reload {file = "Ammocan\functions\reload.sqf";};
+			
+			//[player] call fatLurch_fnc_selectAmmo;
+			class selectAmmo {file = "Ammocan\functions\selectAmmo.sqf";};
+			
+			//[] call fatLurch_fnc_registerKeybinds;
+			class registerKeybinds {file = "Ammocan\functions\registerKeybinds.sqf";};
 		};
 	};
 };
@@ -89,6 +104,16 @@ class Extended_Init_EventHandlers
 	{
         	class Fat_Lurch_ammocan_ship {init = "(_this select 0) call fatLurch_fnc_initAmmocan;";};
    	};
+};
+
+
+class Extended_PreInit_EventHandlers
+{
+    class fatLurch_Ammocan_PreInits
+    {
+        // This snippet runs once and only on client machines
+        clientInit = "[] call fatLurch_fnc_registerKeybinds;";
+    };
 };
 
 
@@ -180,6 +205,7 @@ class CfgMagazines
 		displayName = " Ammocan - 400x .50 Cal (12.7x99) M2 Ball";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm<br>400 Rounds";
 		magazines[] = {"rhs_mag_400rnd_127x99_mag"};
+		count=400;
 	};
  	
  	class Ammocan_400Rnd_127x99_mag_Tracer_Red:ammocan_base
@@ -188,6 +214,7 @@ class CfgMagazines
 		displayName = " Ammocan - 400x .50 Cal (12.7x99) M2 Red Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Red Tracer<br>400 Rounds";
 		magazines[] = {"rhs_mag_400rnd_127x99_mag_Tracer_Red"};
+		count=400;
 	};
 	
 	class Ammocan_400Rnd_127x99_mag_SLAP:ammocan_base
@@ -196,6 +223,7 @@ class CfgMagazines
 		displayName = " Ammocan - 400x .50 Cal (12.7x99) M903 SLAP";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm M903 SLAP<br>400 Rounds";
 		magazines[] = {"rhs_mag_400rnd_127x99_SLAP_mag"};
+		count=400;
 	};
 
 	class Ammocan_400Rnd_127x99_mag_SLAP_Tracer_Red:ammocan_base
@@ -204,6 +232,7 @@ class CfgMagazines
 		displayName = " Ammocan - 400x .50 Cal (12.7x99) M903 SLAP Red Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm M903 SLAP Red Tracer<br>400 Rounds";
 		magazines[] = {"rhs_mag_400rnd_127x99_SLAP_mag_Tracer_Red"};
+		count=400;
 	};
  	
  	// 200x 12.7x99 NATO aka .50 BMG =====================================================================================================
@@ -215,6 +244,7 @@ class CfgMagazines
 		displayName = " Ammocan - 200x .50 Cal (12.7x99) M2 Ball";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm<br>200 Rounds";
 		magazines[] = {"200Rnd_127x99_mag", "rhs_mag_200rnd_127x99_mag"};
+		count=200;
 	};
  	
  	class Ammocan_200Rnd_127x99_mag_Tracer_Red:ammocan_base
@@ -224,6 +254,7 @@ class CfgMagazines
 		displayName = " Ammocan - 200x .50 Cal (12.7x99) M2 Red Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Red Tracer<br>200 Rounds";
 		magazines[] = {"200Rnd_127x99_mag_Tracer_Red", "rhs_mag_200rnd_127x99_mag_Tracer_Red"};
+		count=200;
 	};
 	
 	 class Ammocan_200Rnd_127x99_mag_Tracer_Yellow:ammocan_base
@@ -232,6 +263,7 @@ class CfgMagazines
 		displayName = " Ammocan - 200x .50 Cal (12.7x99) M2 Yellow Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Yellow Tracer<br>200 Rounds";
 		magazines[] = {"200Rnd_127x99_mag_Tracer_Yellow"};
+		count=200;
 	};
 		
 	class Ammocan_200Rnd_127x99_mag_Tracer_Green:ammocan_base
@@ -240,6 +272,7 @@ class CfgMagazines
 		displayName = " Ammocan - 200x .50 Cal (12.7x99) M2 Green Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Green Tracer<br>200 Rounds";
 		magazines[] = {"200Rnd_127x99_mag_Tracer_Green"};
+		count=200;
 	};
 	
 	class Ammocan_200Rnd_127x99_mag_SLAP:ammocan_base
@@ -248,6 +281,7 @@ class CfgMagazines
 		displayName = " Ammocan - 200x .50 Cal (12.7x99) M903 SLAP";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm M903 SLAP<br>200 Rounds";
 		magazines[] = {"rhs_mag_200rnd_127x99_SLAP_mag"};
+		count=200;
 	};
 
 	class Ammocan_200Rnd_127x99_mag_SLAP_Tracer_Red:ammocan_base
@@ -256,6 +290,7 @@ class CfgMagazines
 		displayName = " Ammocan - 200x .50 Cal (12.7x99) M903 SLAP Red Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm M903 SLAP Red Tracer<br>200 Rounds";
 		magazines[] = {"rhs_mag_200rnd_127x99_SLAP_mag_Tracer_Red"};
+		count=200;
 	};
 	
  	// 100x 12.7x99 NATO aka .50 BMG =====================================================================================================
@@ -268,6 +303,7 @@ class CfgMagazines
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Ball";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm<br>100 Rounds";
 		magazines[] = {"100Rnd_127x99_mag", "rhs_mag_100rnd_127x99_mag","CUP_100Rnd_127x99_M"};
+		count=100;
 	};
  	
  	class Ammocan_100Rnd_127x99_mag_Tracer_Red:ammocan_base
@@ -278,6 +314,7 @@ class CfgMagazines
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Red Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Red Tracer<br>100 Rounds";
 		magazines[] = {"100Rnd_127x99_mag_Tracer_Red", "rhs_mag_100rnd_127x99_mag_Tracer_Red","CUP_100Rnd_TE4_Red_Tracer_127x99_M"};
+		count=100;
 	};
 	
 	 class Ammocan_100Rnd_127x99_mag_Tracer_Yellow:ammocan_base
@@ -287,6 +324,7 @@ class CfgMagazines
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Yellow Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Yellow Tracer<br>100 Rounds";
 		magazines[] = {"100Rnd_127x99_mag_Tracer_Yellow", "CUP_100Rnd_TE4_Yellow_Tracer_127x99_M"};
+		count=100;
 	};
 		
 	class Ammocan_100Rnd_127x99_mag_Tracer_Green:ammocan_base
@@ -296,6 +334,7 @@ class CfgMagazines
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Green Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Green Tracer<br>100 Rounds";
 		magazines[] = {"100Rnd_127x99_mag_Tracer_Green","CUP_100Rnd_TE4_Green_Tracer_127x99_M"};
+		count=100;
 	};
 	
 	class Ammocan_100Rnd_127x99_mag_Tracer_White:ammocan_base
@@ -304,6 +343,7 @@ class CfgMagazines
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 White Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm White Tracer<br>100 Rounds";
 		magazines[] = {"CUP_100Rnd_TE4_White_Tracer_127x99_M"};
+		count=100;
 	};
 	
 	class Ammocan_100Rnd_127x99_mag_SLAP:ammocan_base
@@ -312,6 +352,7 @@ class CfgMagazines
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) M903 SLAP";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm M903 SLAP<br>100 Rounds";
 		magazines[] = {"rhs_mag_100rnd_127x99_SLAP_mag"};
+		count=100;
 	};
 
 	class Ammocan_100Rnd_127x99_mag_SLAP_Tracer_Red:ammocan_base
@@ -320,6 +361,7 @@ class CfgMagazines
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) M903 SLAP Red Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm M903 SLAP Red Tracer<br>100 Rounds";
 		magazines[] = {"rhs_mag_100rnd_127x99_SLAP_mag_Tracer_Red"};
+		count=100;
 	};
 	
 	// 130x .338 Magnum =====================================================================================================
@@ -330,6 +372,7 @@ class CfgMagazines
 		displayName = " Ammocan - 130x .338 Norma Magnum";
 		descriptionShort = "Ammocan<br>Caliber: .338 Norma Magnum<br>130 Rounds";
 		magazines[] = {"130Rnd_338_Mag"};
+		count=130;
 	};
 	
 	// 48x 40mm =====================================================================================================
@@ -340,15 +383,19 @@ class CfgMagazines
 		displayName = " Ammocan - 48x 40mm M430A1 HEDP";
 		descriptionShort = "Ammocan<br>Caliber: 40mm M430A1 HEDP<br>48 Rounds";
 		magazines[] = {"RHS_48Rnd_40mm_MK19_M430A1"};
+		count=48;
 	};
+	
 	class Ammocan_RHS_48Rnd_40mm_MK19_M1001:ammocan_base
  	{
  		//RHS
 		displayName = " Ammocan - 48x 40mm M1001 Canister";
 		descriptionShort = "Ammocan<br>Caliber: 40mm M1001 Canister<br>48 Rounds";
 		magazines[] = {"RHS_48Rnd_40mm_MK19_M1001"};
+		count=48;
 	};
 	
+	// 96x 40mm =====================================================================================================
 	
 	class Ammocan_96Rnd_40mm_G_belt:ammocan_base
  	{
@@ -357,6 +404,7 @@ class CfgMagazines
 		displayName = " Ammocan - 96x 40mm M430A1 HEDP";
 		descriptionShort = "Ammocan<br>Caliber: 40mm M430A1 HEDP<br>96 Rounds";
 		magazines[] = {"RHS_96Rnd_40mm_MK19_M430A1", "96Rnd_40mm_G_belt"};
+		count=96;
 	};
 	class Ammocan_RHS_96Rnd_40mm_MK19_M1001:ammocan_base
  	{
@@ -364,6 +412,7 @@ class CfgMagazines
 		displayName = " Ammocan - 96x 40mm M1001 Canister";
 		descriptionShort = "Ammocan<br>Caliber: 40mm M1001 Canister<br>96 Rounds";
 		magazines[] = {"RHS_96Rnd_40mm_MK19_M1001",};
+		count=96;
 	};
 	
 	// 200x 7.62x51 NATO =====================================================================================================
@@ -374,6 +423,7 @@ class CfgMagazines
 		displayName = " Ammocan - 200x 7.62x51mm M80A1 EPR";
 		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm M80A1 EPR<br>200 Rounds";
 		magazines[] = {"rhs_mag_762x51_M240_200"};
+		count=200;
 	};
 	
 	class Ammocan_rhs_mag_762x51_M240_200_M80:ammocan_base
@@ -382,12 +432,12 @@ class CfgMagazines
 		displayName = " Ammocan - 200x 7.62x51mm M80 Ball";
 		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm M80 Ball<br>200 Rounds";
 		magazines[] = {"rhs_mag_762x51_M240_200_M80"};
+		count=200;
 	};
 	
 	
 	// 2000x 7.62x51 NATO =================================================================================================
-	
-	
+		
 	class Ammocan_2000Rnd_762x51_Belt_T_Red:ammocan_base
  	{
  		//Vanilla
@@ -396,6 +446,7 @@ class CfgMagazines
 		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm Red Tracer<br>2000 Rounds";
 		magazines[] = {"CUP_2000Rnd_TE1_Red_Tracer_762x51_M134_M","2000Rnd_762x51_Belt_T_Red"};
 		mass = 150;
+		count=2000;
 	};
 	
 	// 1x TOW Missile =====================================================================================================
@@ -407,6 +458,7 @@ class CfgMagazines
 		descriptionShort = "Ammocan<br>BGM-71A";
 		magazines[] = {"rhs_mag_TOW"};
 		mass = 80;
+		count=1;
 	};
 	
 	class Ammocan_rhs_mag_TOWB:ammocan_base
@@ -416,6 +468,7 @@ class CfgMagazines
 		descriptionShort = "Ammocan<br>BGM-71B";
 		magazines[] = {"rhs_mag_TOWB"};
 		mass = 80;
+		count=1;
 	};
 	
 	class Ammocan_rhs_mag_ITOW:ammocan_base
@@ -425,6 +478,7 @@ class CfgMagazines
 		descriptionShort = "Ammocan<br>BGM-71C";
 		magazines[] = {"rhs_mag_ITOW"};
 		mass = 80;
+		count=1;
 	};
 	
 	class Ammocan_rhs_mag_TOW2:ammocan_base
@@ -434,6 +488,7 @@ class CfgMagazines
 		descriptionShort = "Ammocan<br>BGM-71D";
 		magazines[] = {"rhs_mag_TOW2"};
 		mass = 80;
+		count=1;
 	};
 
 	class Ammocan_rhs_mag_TOW2A:ammocan_base
@@ -443,6 +498,7 @@ class CfgMagazines
 		descriptionShort = "Ammocan<br>BGM-71E";
 		magazines[] = {"rhs_mag_TOW2a"};
 		mass = 80;
+		count=1;
 	};
 
 	class Ammocan_rhs_mag_TOW2b:ammocan_base
@@ -452,6 +508,7 @@ class CfgMagazines
 		descriptionShort = "Ammocan<br>BGM-71F";
 		magazines[] = {"rhs_mag_TOW2b"};
 		mass = 80;
+		count=1;
 	};
 	
 	class Ammocan_rhs_mag_TOW2b_aero:ammocan_base
@@ -461,6 +518,7 @@ class CfgMagazines
 		descriptionShort = "Ammocan<br>BGM-71F-3";
 		magazines[] = {"rhs_mag_TOW2b_aero"};
 		mass = 80;
+		count=1;
 	};
 
 	class Ammocan_rhs_mag_TOW2bb:ammocan_base
@@ -470,6 +528,7 @@ class CfgMagazines
 		descriptionShort = "Ammocan<br>BGM-71H ";
 		magazines[] = {"rhs_mag_TOW2bb"};
 		mass = 80;
+		count=1;
 	};
 	
 	
@@ -482,6 +541,7 @@ class CfgMagazines
 		descriptionShort = "Ammocan<br>Titan AT";
 		magazines[] = {"1Rnd_GAT_missiles"};
 		mass = 80;
+		count=1;
 	};
 
  };

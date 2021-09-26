@@ -14,11 +14,8 @@ https://forums.bohemia.net/forums/topic/160783-how-to-remove-a-magazine-from-a-s
 
 params["_container", "_magazine"];
 private ["_cargo","_index"];
-_cargo = magazinesAmmoCargo _container;
+_cargo = magazineCargo _container;
 _index = _cargo find _magazine;
-
-diag_log format["### - _cargo: %1", _cargo];
-diag_log format["### - _index: %1", _index];
 
 if (not local _container) exitWith{};
 
@@ -28,10 +25,9 @@ if (_index != -1) then
 	_i = 0;
    	clearMagazineCargoGlobal _container;
   	{
-  		diag_log format["### - _index: %1 - _i: %2 - _x # 0: %3 - _x # 1: %4", _index, _i, _x select 0, _x select 1];
 		if (_index != _i) then 
 			{
-				_container addMagazineAmmoCargo [_x select 0,1, _x select 1];
+				_container addMagazineCargoGlobal [_x,1];
 			};
 		_i = _i+1;
 	} forEach _cargo;
