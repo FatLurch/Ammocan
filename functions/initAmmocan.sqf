@@ -11,6 +11,8 @@ _vehicle addEventHandler ["Fired", {
 
 	_found = false;	
 	
+	_vehicle = vehicle _unit;
+	
 	_turretIndex = [_unit, _weapon, _gunner] call fatLurch_fnc_getTurretIndex;	//retrieve the turret index of the current weapon system being fired
 	_ammo = [_unit, _turretIndex, _weapon] call fatLurch_fnc_getWeaponAmmo;	//BIS functions for getting ammo from a (secondary) turret are bugged
 	
@@ -19,12 +21,16 @@ _vehicle addEventHandler ["Fired", {
 		//_ai = !(isPlayer gunner _unit);
 		_ai = !(isPlayer (_vehicle turretUnit _turretIndex));
 		
-		if(missionnamespace getVariable "Fat_Lurch_Ammocan_Hint") then {hint "Press R to reload the turret";};
+		diag_log format["### initAmmocan  ammo = 0      _ai: %1 - _vehicle: %2 - _turretIndex: %3 - _gunner: %4", str(_ai), _vehicle, _turretindex, _vehicle turretUnit _turretIndex];
 		
 		if(_ai) then
 		{
 			[_unit, _turretIndex, _magazine] call fatLurch_fnc_loadAmmoFromInventory;
-		};		
+		}
+		else
+		{	
+			if(missionnamespace getVariable "Fat_Lurch_Ammocan_Hint") then {hint "Press R to reload the turret";};		
+		};
 		
 	};
 }];
