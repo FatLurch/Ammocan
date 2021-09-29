@@ -2,7 +2,7 @@
 
 params["_vehicle", "_weapon", "_magType", "_ammoCanType", "_turretIndex"];
 
-_magPool = magazinesAmmoCargo _vehicle;
+_magPool = [_vehicle] call fatLurch_fnc_getAvailableMagsAmmo;
 
 if (count(_magPool) == 0) exitWith {diag_log format ["### Ammocan Debug - loadAmmo.sqf - No magazines in vehicle: %1 - Exiting loadAmmo", _vehicle]};
 
@@ -22,8 +22,22 @@ forEach _magPool;
 
 _max = _magPoolTrim call CBA_fnc_findMax select 0;		//largest ammo count of the selected mag type
 _vehicle addMagazineTurret [_magType,_turretIndex];			//Add a magazine to the turret
-[_vehicle, _ammoCanType, 1, _max] call CBA_fnc_removeMagazineCargo;	//Consume an ammocan from the inventory
 _vehicle loadMagazine [_turretIndex, _weapon, _magType]; 		//"load" the magazine (this is distint from "adding"
-reload _vehicle;												//perform an actual reload action (animation, etc.)
+
+{
+	{
+		reload _vehicle;						//perform an actual reload action (animation, etc.). Not sure why this has to be spammed
+	} forEach (_vehicle weaponsTurret _x);
+} forEach allTurrets _vehicle;
+
 [_vehicle] call fatLurch_fnc_removeEmptyMagsTurret;				//Remove any empty magazines from the turret
 _vehicle setMagazineTurretAmmo [_magType, _max, _turretIndex];	//Set the turret ammo to the number of rounds available from the ammocan that was in inventory
+
+if(!(_vehicle isKindOf "staticWeapon")) then
+{
+	[_vehicle, _ammoCanType, 1, _max] call CBA_fnc_removeMagazineCargo;	//Consume an ammocan from the inventory
+}
+else
+{
+	//special handler for static turrets //TODO
+};

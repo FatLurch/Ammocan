@@ -77,6 +77,12 @@ class CfgFunctions
 			
 			//[] call fatLurch_fnc_registerKeybinds;
 			class registerKeybinds {file = "Ammocan\functions\registerKeybinds.sqf";};
+			
+			//[vehicle] call fatLurch_fnc_getAvailableMags;
+			class getAvailableMags {file = "Ammocan\functions\getAvailableMags.sqf";};
+			
+			//[vehicle] call fatLurch_fnc_getAvailableMagsAmmo;
+			class getAvailableMagsAmmo {file = "Ammocan\functions\getAvailableMagsAmmo.sqf";};
 		};
 	};
 };

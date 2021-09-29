@@ -2,7 +2,8 @@
 
 params["_vehicle", "_turretIndex", ["_preferredMagType", ""]];
 
-_vehCargoMags = magazineCargo _vehicle;		//Get an array of the magazines in the vehicle
+_vehCargoMags = [_vehicle] call fatLurch_fnc_getAvailableMags;
+
 _weapon = _vehicle currentWeaponTurret _turretIndex;	//get the weapon currently in use for the specified turret
 _vehMags = getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines");	//get an array of magazines that are compatible with the turret weapon
 
