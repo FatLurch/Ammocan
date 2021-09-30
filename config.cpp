@@ -83,6 +83,9 @@ class CfgFunctions
 			
 			//[vehicle] call fatLurch_fnc_getAvailableMagsAmmo;
 			class getAvailableMagsAmmo {file = "Ammocan\functions\getAvailableMagsAmmo.sqf";};
+			
+			//[vehicle] call fatLurch_fnc_compatabilityCheck;
+			class compatabilityCheck {file = "Ammocan\functions\compatabilityCheck.sqf";};
 		};
 	};
 };

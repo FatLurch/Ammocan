@@ -2,9 +2,13 @@
 
 params["_vehicle"];
 
+//Check to see if a vehicle is supported
+
+if(!([_vehicle, true] call fatLurch_fnc_compatabilityCheck)) exitWith {};	//Do not load the ammocan functions onto the vehicle if it has unsupported weapons
+
 _turretIndex = [];
 
-if (isServer || isDedicated) then{[_vehicle] spawn fatLurch_fnc_convertTurretAmmo};
+if (isServer || isDedicated) then {[_vehicle] spawn fatLurch_fnc_convertTurretAmmo};
 
 _vehicle addEventHandler ["Fired", {
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];

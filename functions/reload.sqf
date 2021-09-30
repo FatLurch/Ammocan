@@ -1,7 +1,10 @@
 //This functions reloads the turret. If the magazine is empty then a simple reload is performed. If the magazine is partially spent, the partial is put into inventory
 
 params["_player"];
-_vehicle = vehicle _player;									
+_vehicle = vehicle _player;	
+
+if(!([_vehicle] call fatLurch_fnc_compatabilityCheck)) exitWith {};	
+
 _turret = _vehicle unitTurret _player;						//current turret
 _weapon = _vehicle currentWeaponTurret _turret;			//current turret weapon
 _magazine = _vehicle currentMagazineTurret _turret;			//type of magazine in the turret
