@@ -34,20 +34,19 @@ _turretWeapons = [];
 }forEach magazinesAllTurrets _vehicle;	
 //At this point, the turret has no ammo 
 
-{	
+
+//This affront to the laws of physics and all known dieties configures the weapon in question with exactly ONE magazine in the gun, instantly
+{
 	_turretIndex = _x;
 	{
-		//Load one magazine with the same kind of ammo into the turret as is in the turret config
-		
 		_weapon = _x;
-		
 		if(!(toLower(_weapon) in _blacklist)) then 
-		{
-		
-			_preferredMag = getArray([_vehicle, _turretIndex] call BIS_fnc_turretConfig >> "magazines") select 0;	//get preferred mag type (this is the 1st magazine the vehicle would otherwise spawn with)
-			[_vehicle, _turretIndex, _preferredMag, _weapon] call fatLurch_fnc_loadAmmoFromInventory;		
+		{	
+			_mag = getArray([_vehicle, _turretIndex] call BIS_fnc_turretConfig >> "magazines") select 0;
+			[_vehicle, [_weapon,_turretIndex]] remoteExec ["removeWeaponTurret", _vehicle];
+			[_vehicle, [_mag,_turretIndex]] remoteExec ["addMagazineTurret", _vehicle];
+			[_vehicle, [_weapon,_turretIndex]] remoteExec ["addWeaponTurret", _vehicle];
 		};
-		
 	}forEach (_vehicle weaponsTurret _turretIndex);
 	
 }forEach allTurrets [_vehicle, false];

@@ -25,7 +25,7 @@ if(_ammo == 0) then
 	{
 		//Air, Car, Tank and Ship can all be handled the same because they all have containers/inventory
 		[_vehicle, _turret, _magazine, _weapon] call fatLurch_fnc_loadAmmoFromInventory;
-		diag_log format["### reload.sqf - called loadAmmoFromInventory"];
+		//diag_log format["### reload.sqf - called loadAmmoFromInventory"];
 	}
 	else
 	{
