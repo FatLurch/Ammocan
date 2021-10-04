@@ -6,9 +6,15 @@ params["_vehicle"];
 
 if(!([_vehicle, true] call fatLurch_fnc_compatabilityCheck)) exitWith {};	//Do not load the ammocan functions onto the vehicle if it has unsupported weapons
 
+
+
 _turretIndex = [];
 
-if (isServer || isDedicated) then {[_vehicle] spawn fatLurch_fnc_convertTurretAmmo};
+if (isServer || isDedicated) then
+{
+	[_vehicle] spawn fatLurch_fnc_convertTurretAmmo;
+	[_vehicle] spawn fatLurch_fnc_convertInventoryMagazines;	
+};
 
 _vehicle addEventHandler ["Fired", {
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
@@ -20,16 +26,18 @@ _vehicle addEventHandler ["Fired", {
 	_turretIndex = [_unit, _weapon, _gunner] call fatLurch_fnc_getTurretIndex;	//retrieve the turret index of the current weapon system being fired
 	_ammo = [_unit, _turretIndex, _weapon] call fatLurch_fnc_getWeaponAmmo;	//BIS functions for getting ammo from a (secondary) turret are bugged
 	
+	//diag_log format["##### _unit: %1 - _weapon: %2 - _muzzle: %3 - _mode: %4 - _ammo: %5 - _magazine: %6 - _turretIndex: %7", _unit, _weapon, _muzzle, _mode, _ammo, _magazine, _turretIndex];
+	
 	if(_ammo == 0) then
 	{	
 		//_ai = !(isPlayer gunner _unit);
 		_ai = !(isPlayer (_vehicle turretUnit _turretIndex));
 		
-		diag_log format["### initAmmocan  ammo = 0      _ai: %1 - _vehicle: %2 - _turretIndex: %3 - _gunner: %4", str(_ai), _vehicle, _turretindex, _vehicle turretUnit _turretIndex];
+		//diag_log format["### initAmmocan  ammo = 0      _ai: %1 - _vehicle: %2 - _turretIndex: %3 - _gunner: %4", str(_ai), _vehicle, _turretindex, _vehicle turretUnit _turretIndex];
 		
 		if(_ai) then
 		{
-			[_unit, _turretIndex, _magazine] call fatLurch_fnc_loadAmmoFromInventory;
+			[_unit, _turretIndex, _magazine, _weapon] call fatLurch_fnc_loadAmmoFromInventory;
 		}
 		else
 		{	
@@ -57,7 +65,7 @@ _vehicle addEventHandler ["ContainerClosed", {
 			
 			if(_ai) then
 			{
-				[_vehicle, _turretIndex, _magazine] call fatLurch_fnc_loadAmmoFromInventory;
+				[_vehicle, _turretIndex, _magazine, _weapon] call fatLurch_fnc_loadAmmoFromInventory;
 			};		
 			
 		};
@@ -65,3 +73,5 @@ _vehicle addEventHandler ["ContainerClosed", {
 	}forEach allTurrets [_vehicle, false];
 		
 }];
+
+diag_log format["### Ammocan Debug - Vehicle: %1 configured for use with Ammocan addon", _vehicle];

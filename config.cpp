@@ -86,6 +86,9 @@ class CfgFunctions
 			
 			//[vehicle] call fatLurch_fnc_compatabilityCheck;
 			class compatabilityCheck {file = "Ammocan\functions\compatabilityCheck.sqf";};
+			
+			//[vehicle] call fatLurch_fnc_convertInventoryMagazines;
+			class convertInventoryMagazines {file = "Ammocan\functions\convertInventoryMagazines.sqf";};
 		};
 	};
 };
@@ -165,7 +168,8 @@ class cfgWeapons
 			"Ammocan_rhs_mag_TOW2b_aero",
 			"Ammocan_rhs_mag_TOW2bb",
 			"Ammocan_2000Rnd_762x51_Belt_T_Red",
-			"Ammocan_1Rnd_GAT_missiles"
+			"Ammocan_1Rnd_GAT_missiles", 
+			"Ammocan_UK3CB_BAF_32Rnd_40mm_G_Box"
 		};
 	};
 };
@@ -317,9 +321,10 @@ class CfgMagazines
  		//Vanilla
  		//RHS
  		//CUP
+ 		//3CB
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) M2 Red Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Red Tracer<br>100 Rounds";
-		magazines[] = {"100Rnd_127x99_mag_Tracer_Red", "rhs_mag_100rnd_127x99_mag_Tracer_Red","CUP_100Rnd_TE4_Red_Tracer_127x99_M"};
+		magazines[] = {"100Rnd_127x99_mag_Tracer_Red", "rhs_mag_100rnd_127x99_mag_Tracer_Red","CUP_100Rnd_TE4_Red_Tracer_127x99_M", "UK3CB_BAF_127_100Rnd"};
 		count=100;
 	};
 	
@@ -381,6 +386,18 @@ class CfgMagazines
 		count=130;
 	};
 	
+	// 32x 40mm =====================================================================================================
+		
+	class Ammocan_UK3CB_BAF_32Rnd_40mm_G_Box:ammocan_base
+ 	{
+ 		//3CB
+		displayName = " Ammocan - 32x 40mm HEDP";
+		descriptionShort = "Ammocan<br>Caliber: 40mm HEDP<br>32 Rounds";
+		magazines[] = {"UK3CB_BAF_32Rnd_40mm_G_Box"};
+		count=32;
+	};
+	
+	
 	// 48x 40mm =====================================================================================================
 	
 	class Ammocan_RHS_48Rnd_40mm_MK19_M430A1:ammocan_base
@@ -426,6 +443,8 @@ class CfgMagazines
 	class Ammocan_rhs_mag_762x51_M240_200:ammocan_base
  	{
  		//RHS
+ 		
+ 		//Tracer every 5
 		displayName = " Ammocan - 200x 7.62x51mm M80A1 EPR";
 		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm M80A1 EPR<br>200 Rounds";
 		magazines[] = {"rhs_mag_762x51_M240_200"};
@@ -435,12 +454,14 @@ class CfgMagazines
 	class Ammocan_rhs_mag_762x51_M240_200_M80:ammocan_base
  	{
  		//RHS
-		displayName = " Ammocan - 200x 7.62x51mm M80 Ball";
-		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm M80 Ball<br>200 Rounds";
-		magazines[] = {"rhs_mag_762x51_M240_200_M80"};
+ 		//3CB
+ 		
+ 		//Tracer every 5
+		displayName = " Ammocan - 200x 7.62x51mm Ball";
+		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm Ball<br>200 Rounds";
+		magazines[] = {"rhs_mag_762x51_M240_200_M80", "UK3CB_BAF_762_200Rnd", "UK3CB_BAF_762_200Rnd_T"};
 		count=200;
 	};
-	
 	
 	// 2000x 7.62x51 NATO =================================================================================================
 		

@@ -2,6 +2,8 @@
 
 params["_vehicle"];
 
+_blacklist=["uk3cb_baf_safe", "smokelauncher"];	//A list of weapons that should be skipped. All entries should be lower case
+
 sleep 1;	
 
 _firstHit = true;
@@ -19,7 +21,7 @@ _turretWeapons = [];
 		
 		If(_vehicle canAdd _foundType) then
 		{
-			diag_log format["### Ammocan Debug - convertTurretAmmo.sqf - Converting ammo in vehicle %1, foundType: %2,  _magazine: %3", _vehicle, _foundType, _magazine];
+			//diag_log format["### Ammocan Debug - convertTurretAmmo.sqf - Converting ammo in vehicle %1, foundType: %2,  _magazine: %3", _vehicle, _foundType, _magazine];
 			_vehicle addMagazineCargoGlobal [_foundType, 1];
 			[_vehicle, [_magazine,_turretIndex]] remoteExec ["removeMagazineTurret", _vehicle];
 		}
@@ -33,10 +35,20 @@ _turretWeapons = [];
 //At this point, the turret has no ammo 
 
 {	
-	//Load one magazine with the same kind of ammo into the turret as is in the turret config
-	
-	_preferredMag = getArray([_vehicle, _x] call BIS_fnc_turretConfig >> "magazines") select 0;	//get preferred mag type (this is the 1st magazine the vehicle would otherwise spawn with)
-	[_vehicle, _x, _preferredMag] call fatLurch_fnc_loadAmmoFromInventory;		
+	_turretIndex = _x;
+	{
+		//Load one magazine with the same kind of ammo into the turret as is in the turret config
+		
+		_weapon = _x;
+		
+		if(!(toLower(_weapon) in _blacklist)) then 
+		{
+		
+			_preferredMag = getArray([_vehicle, _turretIndex] call BIS_fnc_turretConfig >> "magazines") select 0;	//get preferred mag type (this is the 1st magazine the vehicle would otherwise spawn with)
+			[_vehicle, _turretIndex, _preferredMag, _weapon] call fatLurch_fnc_loadAmmoFromInventory;		
+		};
+		
+	}forEach (_vehicle weaponsTurret _turretIndex);
 	
 }forEach allTurrets [_vehicle, false];
 

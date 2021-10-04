@@ -2,7 +2,7 @@
 
 params ["_vehicle", ["_verboseOutput", false]];
 
-_blacklist = ["UK3CB_BAF_Safe", "Laserdesignator_mounted"];	//This is a blacklist of special weapons that should simply be skipped instead of being evaluated
+_blacklist = ["UK3CB_BAF_Safe","SmokeLauncher", "Laserdesignator_mounted"];	//This is a blacklist of special weapons that should simply be skipped instead of being evaluated
 
 _returnValue = true;
 
@@ -32,7 +32,16 @@ _returnValue = true;
 			
 			if(_count == 0) exitWith 
 			{
-				if(_verboseOutput) then {diag_log format["### Ammocan - There are no supported magazine/ammocan types for weapon: %1 in vehicle type: %2 - Ammocan will not be loaded for this vehicle", _weapon, typeOf _vehicle];};	
+
+				_defaultMagazines = getArray([_vehicle, _turretIndex] call BIS_fnc_turretConfig >> "magazines");
+				
+				if(_verboseOutput) then 
+				{
+					diag_log format["### Ammocan - There are no supported magazine/ammocan types for weapon: %1 in vehicle type: %2 - Ammocan will not be loaded for this vehicle", _weapon, typeOf _vehicle];
+					diag_log format["### Ammocan - The default magazine(s) for weapon: %1 are:", _weapon];
+					diag_log format["### Ammocan - %1", _defaultMagazines];
+				};
+				
 				_returnValue = false;
 			};
 		

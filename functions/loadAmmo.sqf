@@ -6,7 +6,7 @@ _magPool = [_vehicle] call fatLurch_fnc_getAvailableMagsAmmo;
 
 if (count(_magPool) == 0) exitWith {diag_log format ["### Ammocan Debug - loadAmmo.sqf - No magazines in vehicle: %1 - Exiting loadAmmo", _vehicle]};
 
-diag_log format ["### Ammocan Debug - loadAmmo.sqf - Loading magazine %1 to vehicle %2 turret %3 and consuming ammocan type %4",  _magType, _vehicle, _turretIndex, _ammoCanType];
+diag_log format ["### Ammocan Debug - loadAmmo.sqf - Loading magazine %1 to vehicle %2 turret %3 and consuming ammocan type %4 for weapon: %5",  _magType, _vehicle, _turretIndex, _ammoCanType, _weapon];
 
 _magPoolTrim = [];
 
@@ -22,7 +22,7 @@ forEach _magPool;
 
 _max = _magPoolTrim call CBA_fnc_findMax select 0;		//largest ammo count of the selected mag type
 _vehicle addMagazineTurret [_magType,_turretIndex];			//Add a magazine to the turret
-_vehicle loadMagazine [_turretIndex, _weapon, _magType]; 		//"load" the magazine (this is distint from "adding"
+_vehicle loadMagazine [_turretIndex, _weapon, _magType]; 		//"load" the magazine (this is distinct from "adding")
 
 {
 	{
