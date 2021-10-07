@@ -10,9 +10,9 @@ _weapon = _vehicle currentWeaponTurret _turret;			//current turret weapon
 _magazine = _vehicle currentMagazineTurret _turret;			//type of magazine in the turret
 _ammo = [_vehicle, _turret] call fatLurch_fnc_getTurretAmmo;	//ammo count
 
-if(_magazine == "") then {_ammo = 0};
+if((weaponState [_vehicle, _turret, _weapon] select 6) > 0) exitWith {};	//Do not interrupt a reload
 
-//diag_log format["### Reload.sqf - _turret: %1 - _weapon: %2 - _magazine: %3 - _ammo: %4", _turret, _weapon, _magazine, _ammo];
+if(_magazine == "") then {_ammo = 0};	//If there's no magazine in the gun, just say the ammo is 0
 
 if(!(_vehicle isKindOf "Air") && !(_vehicle isKindOf "Car") && !(_vehicle isKindOf "Tank") && !(_vehicle isKindOf "Ship") && !(_vehicle isKindOf "staticWeapon")) exitWith {};		
 
