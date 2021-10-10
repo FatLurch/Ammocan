@@ -6,8 +6,6 @@ params["_vehicle"];
 
 if(!([_vehicle, true] call fatLurch_fnc_compatabilityCheck)) exitWith {};	//Do not load the ammocan functions onto the vehicle if it has unsupported weapons
 
-
-
 _turretIndex = [];
 
 if (isServer || isDedicated) then

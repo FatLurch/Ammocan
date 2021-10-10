@@ -10,10 +10,8 @@ _weaponAcceptableMagazines = [_weapon] call CBA_fnc_compatibleMagazines;
 
 _weaponAcceptableMagazines = [_weaponAcceptableMagazines] call fatLurch_fnc_toLowerArray;
 
-
 {
-	
-	if(_x  in _weaponAcceptableMagazines) then
+	if(_x in _weaponAcceptableMagazines) then
 	{
 		_weaponMatchedMagazines pushback _x;
 	};

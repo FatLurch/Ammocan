@@ -2,7 +2,7 @@
 
 params["_vehicle"];
 
-_blacklist=["uk3cb_baf_safe", "smokelauncher"];	//A list of weapons that should be skipped. All entries should be lower case
+_blacklist = [] call fatLurch_fnc_weaponBlacklist;
 
 if(!([_vehicle, _blacklist] call fatLurch_fnc_needTurretAmmoconversion)) exitWith {};	//Exit if no weapons on the vehicle need turret ammo converted. This skips a superfluous animation 
 
