@@ -76,4 +76,4 @@ _vehicle addEventHandler ["ContainerClosed", {
 		
 }];
 
-diag_log format["### Ammocan Debug - Vehicle: %1 configured for use with Ammocan addon", _vehicle];
+diag_log format["### Ammocan - Vehicle: %1 configured for use with Ammocan addon", _vehicle];

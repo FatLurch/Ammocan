@@ -25,7 +25,6 @@ if(_preferredMagType != "") then
 			{			
 				[_vehicle, _weapon,  _preferredMagType, _x, _turretIndex] call fatLurch_fnc_loadAmmo;	//Load the preferred ammo
 				//diag_log format["##### loadAmmoFromInventory - calling loadAmmo - using preferred mag"];
-				diag_log format["##### _vehicle: %1 - _weapon: %2 - _preferredMagType: %3 - _x: %4 - _turretIndex: %5", _vehicle, _weapon, _preferredMagType, _x, _turretIndex];
 				_found = true;															//Prevents numerous cans from being loaded into the turret at once					
 			};
 			

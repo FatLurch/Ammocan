@@ -6,7 +6,7 @@ _magPool = [_vehicle] call fatLurch_fnc_getAvailableMagsAmmo;
 
 if (count(_magPool) == 0) exitWith {diag_log format ["### Ammocan Debug - loadAmmo.sqf - No magazines in vehicle: %1 - Exiting loadAmmo", _vehicle]};
 
-diag_log format ["### Ammocan Debug - loadAmmo.sqf - Loading magazine %1 to vehicle %2 turret %3 and consuming ammocan type %4 for weapon: %5",  _magType, _vehicle, _turretIndex, _ammoCanType, _weapon];
+//diag_log format ["### Ammocan Debug - loadAmmo.sqf - Loading magazine %1 to vehicle %2 turret %3 and consuming ammocan type %4 for weapon: %5",  _magType, _vehicle, _turretIndex, _ammoCanType, _weapon];
 
 _magPoolTrim = [];
 

@@ -46,7 +46,7 @@ class CfgFunctions
 			class findAmmocanType {file = "Ammocan\functions\findAmmocanType.sqf";};
 			
 			//[_vehicle]call fatLurch_fnc_convertTurretAmmo;
-			//class convertTurretAmmo {file = "Ammocan\functions\convertTurretAmmo.sqf";};
+			class convertTurretAmmo {file = "Ammocan\functions\convertTurretAmmo.sqf";};
 			
 			//[_vehicle, _turretPath]call fatLurch_fnc_getTurretAmmo;
 			class getTurretAmmo {file = "Ammocan\functions\getTurretAmmo.sqf";};
@@ -89,6 +89,13 @@ class CfgFunctions
 			
 			//[vehicle] call fatLurch_fnc_convertInventoryMagazines;
 			class convertInventoryMagazines {file = "Ammocan\functions\convertInventoryMagazines.sqf";};
+			
+			//[vehicle, blacklist] call fatLurch_fnc_needTurretAmmoConversion;
+			class needTurretAmmoConversion {file = "Ammocan\functions\needTurretAmmoConversion.sqf";};
+			
+			//[vehicle, turretIndex, weapon] call fatLurch_fnc_turretWeaponMagazineCount;
+			class turretWeaponMagazineCount {file = "Ammocan\functions\turretWeaponMagazineCount.sqf";};
+
 		};
 	};
 };

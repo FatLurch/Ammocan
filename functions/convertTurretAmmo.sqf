@@ -4,19 +4,20 @@ params["_vehicle"];
 
 _blacklist=["uk3cb_baf_safe", "smokelauncher"];	//A list of weapons that should be skipped. All entries should be lower case
 
-_count = (count(magazinesAllTurrets _vehicle) -1);	//TODO - this needs to be evaluated per weapon on the turret
-
-sleep 1;	
+if(!([_vehicle, _blacklist] call fatLurch_fnc_needTurretAmmoconversion)) exitWith {};	//Exit if no weapons on the vehicle need turret ammo converted. This skips a superfluous animation 
 
 _firstHit = true;
 _turretWeapons = [];
-turretAmmo = [];
+turretAmmo = []; 
+_reloading = false;
 
 //Build an array of how many rounds are loaded in the gun, per each turret weapon
 {
 	_turretIndex = _x;
 	{
 		_weapon = _x;
+		
+		if((weaponState [_vehicle, _turretIndex, _weapon] select 6) > 0) exitWith {_reloading = true};	//If the weapon is in the middle of a reloading animation, return true
 		
 		if(!(toLower(_weapon) in _blacklist)) then 
 		{	
@@ -27,6 +28,7 @@ turretAmmo = [];
 	
 }forEach allTurrets [_vehicle, false];
 
+if(_reloading) exitWith {};	//exit here so as not to interrupt a reloading animation. Any weapon on the vehicle will trip this
 
 //This loop replaces magazines in the turret with ammocans in the vehicle inventory
 {
@@ -41,11 +43,7 @@ turretAmmo = [];
 		
 		If(_vehicle canAdd _foundType) then
 		{
-			diag_log format["### Ammocan Debug - convertTurretAmmo.sqf - Converting ammo in vehicle %1, foundType: %2,  _magazine: %3, _forEachIndex: ", _vehicle, _foundType, _magazine, _forEachIndex];
-			//if(_forEachIndex < _count) then
-			//{
-				_vehicle addMagazineCargoGlobal [_foundType, 1];
-			//};
+			_vehicle addMagazineCargoGlobal [_foundType, 1];
 			[_vehicle, [_magazine,_turretIndex]] remoteExec ["removeMagazineTurret", _vehicle];
 		}
 		else
@@ -54,7 +52,7 @@ turretAmmo = [];
 		};
 	};
 
-}forEach magazinesAllTurrets _vehicle;	
+}forEach magazinesAllTurrets _vehicle;
 //At this point, the turret has *no* ammo 
 
 
@@ -72,9 +70,9 @@ _loop = 0;
 			[_vehicle, [_weapon,_turretIndex]] remoteExec ["removeWeaponTurret", _vehicle];
 			[_vehicle, [_mag,_turretIndex]] remoteExec ["addMagazineTurret", _vehicle];
 			[_vehicle, [_weapon,_turretIndex]] remoteExec ["addWeaponTurret", _vehicle];
-			[_vehicle, [_mag, (turretAmmo select _loop), _turretIndex]] remoteExec ["setMagazineTurretAmmo", _vehicle];	
-			_loop = _loop +1;
-			_vehicle selectWeaponTurret [_originalWeapon, _turretIndex];	//Restore the selected weapon to the one that was selected before loading
+			[_vehicle, [_mag, (turretAmmo select _loop), _turretIndex]] remoteExec ["setMagazineTurretAmmo", _vehicle];	//Setup the weapon with the same amount of rounds it originally had as opposed to being topped off
+			_loop = _loop +1;	//This is used as an array index to pick the right element out of the turretAmmo array defined up top
+			[_vehicle, [_originalWeapon, _turretIndex]] remoteExec ["selectWeaponTurret", _vehicle];	//Restore the selected weapon to the one that was selected before loading
 			
 			//Consume an ammocan
 			_ammoCanType = [_mag] call fatLurch_fnc_findAmmocanType;
