@@ -54,6 +54,8 @@ _vehicle addEventHandler ["ContainerClosed", {
 	//_vehicle = the vehicle acting as a container
 	//_unit = the unit that closed the inventory
 	
+	[_vehicle] spawn fatLurch_fnc_convertTurretAmmo;
+	
 	{
 		_turretIndex = _x;
 		_weapon = _vehicle currentWeaponTurret _turretIndex;

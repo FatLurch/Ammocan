@@ -21,16 +21,11 @@ _magPoolTrim = [];
 forEach _magPool;
 
 _max = _magPoolTrim call CBA_fnc_findMax select 0;		//largest ammo count of the selected mag type
+
+//Reload the turret
+[_vehicle] call fatLurch_fnc_removeEmptyMagsTurret;				//Remove any empty magazines from the turret. The order of these events is important - reloading won't happen on some guns without removing the empty magazines first
 _vehicle addMagazineTurret [_magType,_turretIndex];			//Add a magazine to the turret
 _vehicle loadMagazine [_turretIndex, _weapon, _magType]; 		//"load" the magazine (this is distinct from "adding")
-
-{
-	{
-		reload _vehicle;						//perform an actual reload action (animation, etc.). Not sure why this has to be spammed
-	} forEach (_vehicle weaponsTurret _x);
-} forEach allTurrets _vehicle;
-
-[_vehicle] call fatLurch_fnc_removeEmptyMagsTurret;				//Remove any empty magazines from the turret
 _vehicle setMagazineTurretAmmo [_magType, _max, _turretIndex];	//Set the turret ammo to the number of rounds available from the ammocan that was in inventory
 
 if(!(_vehicle isKindOf "staticWeapon")) then

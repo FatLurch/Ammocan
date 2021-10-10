@@ -46,7 +46,7 @@ class CfgFunctions
 			class findAmmocanType {file = "Ammocan\functions\findAmmocanType.sqf";};
 			
 			//[_vehicle]call fatLurch_fnc_convertTurretAmmo;
-			class convertTurretAmmo {file = "Ammocan\functions\convertTurretAmmo.sqf";};
+			//class convertTurretAmmo {file = "Ammocan\functions\convertTurretAmmo.sqf";};
 			
 			//[_vehicle, _turretPath]call fatLurch_fnc_getTurretAmmo;
 			class getTurretAmmo {file = "Ammocan\functions\getTurretAmmo.sqf";};
@@ -93,7 +93,7 @@ class CfgFunctions
 	};
 };
 
-class Extended_Init_EventHandlers 
+class Extended_InitPost_EventHandlers 
 {
 	class air
 	{

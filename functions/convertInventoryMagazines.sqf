@@ -1,7 +1,5 @@
 params ["_vehicle"];
 
-sleep 1;
-
 //diag_log format["### - convertInventoryMagazines called for vehicle: %1", _vehicle];
 
 _magazines = magazinesAmmoCargo _vehicle;

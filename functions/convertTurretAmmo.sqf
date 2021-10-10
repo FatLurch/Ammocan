@@ -4,10 +4,11 @@ params["_vehicle"];
 
 _blacklist=["uk3cb_baf_safe", "smokelauncher"];	//A list of weapons that should be skipped. All entries should be lower case
 
+_count = (count(magazinesAllTurrets _vehicle) -1);	//TODO - this needs to be evaluated per weapon on the turret
+
 sleep 1;	
 
 _firstHit = true;
-
 _turretWeapons = [];
 turretAmmo = [];
 
@@ -15,16 +16,19 @@ turretAmmo = [];
 {
 	_turretIndex = _x;
 	{
+		_weapon = _x;
 		
-		turretAmmo pushback ([_vehicle, _turretIndex] call fatLurch_fnc_getTurretAmmo); //TODO - This part is being tested
+		if(!(toLower(_weapon) in _blacklist)) then 
+		{	
+			turretAmmo pushback ([_vehicle, _turretIndex, _weapon] call fatLurch_fnc_getTurretAmmo);
+		};
 
 	}forEach (_vehicle weaponsTurret _turretIndex);
 	
 }forEach allTurrets [_vehicle, false];
 
-diag_log format["##### convertTurretAmmo - _turretAmmo:  %1", turretAmmo];
 
-_count = (count(magazinesAllTurrets _vehicle) -1);
+//This loop replaces magazines in the turret with ammocans in the vehicle inventory
 {
 
 	_magazine = _x select 0;
@@ -37,11 +41,11 @@ _count = (count(magazinesAllTurrets _vehicle) -1);
 		
 		If(_vehicle canAdd _foundType) then
 		{
-			//diag_log format["### Ammocan Debug - convertTurretAmmo.sqf - Converting ammo in vehicle %1, foundType: %2,  _magazine: %3, _forEachIndex: ", _vehicle, _foundType, _magazine, _forEachIndex];
-			if(_forEachIndex < _count) then
-			{
+			diag_log format["### Ammocan Debug - convertTurretAmmo.sqf - Converting ammo in vehicle %1, foundType: %2,  _magazine: %3, _forEachIndex: ", _vehicle, _foundType, _magazine, _forEachIndex];
+			//if(_forEachIndex < _count) then
+			//{
 				_vehicle addMagazineCargoGlobal [_foundType, 1];
-			};
+			//};
 			[_vehicle, [_magazine,_turretIndex]] remoteExec ["removeMagazineTurret", _vehicle];
 		}
 		else
@@ -51,27 +55,33 @@ _count = (count(magazinesAllTurrets _vehicle) -1);
 	};
 
 }forEach magazinesAllTurrets _vehicle;	
-//At this point, the turret has no ammo 
+//At this point, the turret has *no* ammo 
 
 
 //This affront to the laws of physics and all known dieties configures the weapon in question with exactly ONE magazine in the gun, instantly
 _loop = 0;
 {
-
 	_turretIndex = _x;
 	{
 		_weapon = _x;
+		
 		if(!(toLower(_weapon) in _blacklist)) then 
 		{	
-			_mag = getArray([_vehicle, _turretIndex] call BIS_fnc_turretConfig >> "magazines") select 0;
+			_originalWeapon = _vehicle currentWeaponTurret _turretIndex;
+			_mag = getArray([_vehicle, _turretIndex] call BIS_fnc_turretConfig >> "magazines") select 0;	//TODO should match current ammo type if there's already ammo in the gun
 			[_vehicle, [_weapon,_turretIndex]] remoteExec ["removeWeaponTurret", _vehicle];
 			[_vehicle, [_mag,_turretIndex]] remoteExec ["addMagazineTurret", _vehicle];
 			[_vehicle, [_weapon,_turretIndex]] remoteExec ["addWeaponTurret", _vehicle];
-			//_vehicle setMagazineTurretAmmo [_magType, _max, _turretIndex];
-			[_vehicle, [_mag, turretAmmo select _loop, _turretIndex]] remoteExec ["setMagazineTurretAmmo", _vehicle];	//TODO - This should be ready now
-			diag_log format["### - convertTurretAmmo - _vehicle: %1 - _turretIndex %2 - _weapon: %3 - ammo: %4", _vehicle, _turretindex, _weapon, turretAmmo select _loop];
+			[_vehicle, [_mag, (turretAmmo select _loop), _turretIndex]] remoteExec ["setMagazineTurretAmmo", _vehicle];	
 			_loop = _loop +1;
+			_vehicle selectWeaponTurret [_originalWeapon, _turretIndex];	//Restore the selected weapon to the one that was selected before loading
+			
+			//Consume an ammocan
+			_ammoCanType = [_mag] call fatLurch_fnc_findAmmocanType;
+			_ammoCount = [_vehicle, _turretIndex, _weapon] call fatLurch_fnc_getTurretAmmo;
+			_test = [_vehicle, _ammoCanType, 1] call CBA_fnc_removeMagazineCargo;	
 		};
+		
 	}forEach (_vehicle weaponsTurret _turretIndex);
 	
 }forEach allTurrets [_vehicle, false];
