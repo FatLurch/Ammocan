@@ -33,8 +33,6 @@ class CfgFunctions
 	{
 		class ammocan
 		{
-			//[_unit, _weapon]call fatLurch_fnc_getTurretIndex;
-			class getTurretIndex {file = "Ammocan\functions\getTurretIndex.sqf";};
 						
 			//[_vehicle]call fatLurch_fnc_initAmmocan;
 			class initAmmocan {file = "Ammocan\functions\initAmmocan.sqf";};
@@ -181,7 +179,9 @@ class cfgWeapons
 			"Ammocan_2000Rnd_762x51_Belt_T_Red",
 			"Ammocan_1Rnd_GAT_missiles", 
 			"Ammocan_UK3CB_BAF_32Rnd_40mm_G_Box", 
-			"Ammocan_CUP_100Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M"
+			"Ammocan_CUP_100Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M", 
+			"Ammocan_1000Rnd_762x51", 
+			"Ammocan_900Rnd_127x99"
 		};
 	};
 };
@@ -224,9 +224,10 @@ class CfgMagazines
  	class Ammocan_rhs_mag_400rnd_127x99_mag:ammocan_base
  	{
  		//RHS
+ 		//Vurtual HMMWV
 		displayName = " Ammocan - 400x .50 Cal (12.7x99) Ball";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm<br>400 Rounds";
-		magazines[] = {"rhs_mag_400rnd_127x99_mag"};
+		magazines[] = {"rhs_mag_400rnd_127x99_mag", "vurtual_400Rnd_127x99_belt"};
 		count=400;
 	};
  	
@@ -387,6 +388,17 @@ class CfgMagazines
 		count=100;
 	};
 	
+	 // 900x 12.7x99 NATO aka .50 BMG =====================================================================================================
+	
+	class Ammocan_900Rnd_127x99:ammocan_base
+ 	{
+ 		//Vurtual HMMWV
+		displayName = " Ammocan - 900x .50 Cal (12.7x99) Ball";
+		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Ball<br>900 Rounds";
+		magazines[] = {"vurtual_900Rnd_127x99_belt"};
+		count=900;
+	};
+	
 	// 130x .338 Magnum =====================================================================================================
 	
 	class Ammocan_130Rnd_338_mag:ammocan_base
@@ -416,9 +428,10 @@ class CfgMagazines
  	{
  		//RHS
  		//CUP
+ 		//Vurtual HMMWV
 		displayName = " Ammocan - 48x 40mm HEDP";
 		descriptionShort = "Ammocan<br>Caliber: 40mm HEDP<br>48 Rounds";
-		magazines[] = {"RHS_48Rnd_40mm_MK19_M430A1", "CUP_48Rnd_40mm_MK19_M"};
+		magazines[] = {"RHS_48Rnd_40mm_MK19_M430A1", "CUP_48Rnd_40mm_MK19_M", "vurtual_48Rnd_40mm_G_belt"};
 		count=48;
 	};
 	
@@ -437,9 +450,10 @@ class CfgMagazines
  	{
  		//Vanilla
  		//RHS
+ 		//Vurtual HMMWV
 		displayName = " Ammocan - 96x 40mm HEDP";
 		descriptionShort = "Ammocan<br>Caliber: 40mm HEDP<br>96 Rounds";
-		magazines[] = {"RHS_96Rnd_40mm_MK19_M430A1", "96Rnd_40mm_G_belt"};
+		magazines[] = {"RHS_96Rnd_40mm_MK19_M430A1", "96Rnd_40mm_G_belt", "vurtual_96Rnd_40mm_G_belt"};
 		count=96;
 	};
 	class Ammocan_RHS_96Rnd_40mm_MK19_M1001:ammocan_base
@@ -470,8 +484,9 @@ class CfgMagazines
  	{
  		//RHS
  		
+ 		
  		//Tracer every 5
-		displayName = " Ammocan - 200x 7.62x51mm M80A1 EPR";
+		displayName = " Ammocan - 200x 7.62x51mm EPR";
 		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm M80A1 EPR<br>200 Rounds";
 		magazines[] = {"rhs_mag_762x51_M240_200"};
 		count=200;
@@ -481,23 +496,37 @@ class CfgMagazines
  	{
  		//RHS
  		//3CB
+ 		//Vurtual HMMWV
  		
  		//Tracer every 5
 		displayName = " Ammocan - 200x 7.62x51mm Ball";
 		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm Ball<br>200 Rounds";
-		magazines[] = {"rhs_mag_762x51_M240_200_M80", "UK3CB_BAF_762_200Rnd", "UK3CB_BAF_762_200Rnd_T"};
+		magazines[] = {"rhs_mag_762x51_M240_200_M80", "UK3CB_BAF_762_200Rnd", "UK3CB_BAF_762_200Rnd_T", "vurtual_200rnd_762x51_box", "vurtual_200Rnd_762x51_box_heli"};
 		count=200;
 	};
 	
+	// 1000x 7.62x51 NATO =================================================================================================
+		
+	class Ammocan_1000Rnd_762x51:ammocan_base
+ 	{
+ 		//Vurtual HMMWV
+		displayName = " Ammocan - 1000x 7.62x51mm";
+		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm<br>1000 Rounds";
+		magazines[] = {"vurtual_1000rnd_762x51_box"};
+		mass = 150;
+		count=1000;
+	};
+		
 	// 2000x 7.62x51 NATO =================================================================================================
 		
 	class Ammocan_2000Rnd_762x51_Belt_T_Red:ammocan_base
  	{
  		//Vanilla
  		//CUP (used in M134)
+ 		//Vurtual HMMWV
 		displayName = " Ammocan - 2000x 7.62x51mm Red Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm Red Tracer<br>2000 Rounds";
-		magazines[] = {"CUP_2000Rnd_TE1_Red_Tracer_762x51_M134_M","2000Rnd_762x51_Belt_T_Red"};
+		magazines[] = {"CUP_2000Rnd_TE1_Red_Tracer_762x51_M134_M","2000Rnd_762x51_Belt_T_Red", "vurtual_2000Rnd_762x51_belt_heli", "vurtual_2000Rnd_762x51_belt"};
 		mass = 150;
 		count=2000;
 	};

@@ -21,7 +21,9 @@ _vehicle addEventHandler ["Fired", {
 	
 	_vehicle = vehicle _unit;
 	
-	_turretIndex = [_unit, _weapon, _gunner] call fatLurch_fnc_getTurretIndex;	//retrieve the turret index of the current weapon system being fired
+	//_turretIndex = [_unit, _weapon, _gunner] call fatLurch_fnc_getTurretIndex;	//retrieve the turret index of the current weapon system being fired
+	
+	_turretIndex = _gunner call CBA_fnc_turretPath;
 	_ammo = [_unit, _turretIndex, _weapon] call fatLurch_fnc_getWeaponAmmo;	//BIS functions for getting ammo from a (secondary) turret are bugged
 	
 	//diag_log format["##### _unit: %1 - _weapon: %2 - _muzzle: %3 - _mode: %4 - _ammo: %5 - _magazine: %6 - _turretIndex: %7", _unit, _weapon, _muzzle, _mode, _ammo, _magazine, _turretIndex];
@@ -74,4 +76,4 @@ _vehicle addEventHandler ["ContainerClosed", {
 		
 }];
 
-diag_log format["### Ammocan - Vehicle: %1 configured for use with Ammocan addon", _vehicle];
+diag_log format["### Ammocan - Vehicle: %1 - Type: %2  - Configured for use with Ammocan addon", _vehicle, typeOf(_vehicle)];

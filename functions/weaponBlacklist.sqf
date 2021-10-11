@@ -5,7 +5,8 @@ _blacklist =
 	"SmokeLauncher", 
 	"Laserdesignator_mounted", 
 	"rhsusf_weap_m259", 
-	"rhsusf_weap_DummyLauncher"
+	"rhsusf_weap_DummyLauncher",
+	"vurtual_smokelauncher_crows"
 ];	
 
 [_blacklist] call fatLurch_fnc_toLowerArray;

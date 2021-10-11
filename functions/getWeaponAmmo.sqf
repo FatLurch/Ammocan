@@ -2,7 +2,9 @@
 
 params["_vehicle", "_turretPath", "_weapon"];
 
-_compatibleMags = [_weapon] call bis_fnc_compatibleMagazines;
+_compatibleMags = [_weapon] call CBA_fnc_compatibleMagazines;
+
+_compatibleMags = [_compatibleMags] call fatLurch_fnc_toLowerArray;
 
 _ammo = 0;
 
