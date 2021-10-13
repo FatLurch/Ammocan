@@ -497,11 +497,12 @@ class CfgMagazines
  		//RHS
  		//3CB
  		//Vurtual HMMWV
+ 		//Foxhound LPPV
  		
  		//Tracer every 5
-		displayName = " Ammocan - 200x 7.62x51mm Ball";
+		displayName = " Ammocan - 200x 7.62x51mm";
 		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm Ball<br>200 Rounds";
-		magazines[] = {"rhs_mag_762x51_M240_200_M80", "UK3CB_BAF_762_200Rnd", "UK3CB_BAF_762_200Rnd_T", "vurtual_200rnd_762x51_box", "vurtual_200Rnd_762x51_box_heli"};
+		magazines[] = {"rhs_mag_762x51_M240_200_M80", "UK3CB_BAF_762_200Rnd", "UK3CB_BAF_762_200Rnd_T", "vurtual_200rnd_762x51_box", "vurtual_200Rnd_762x51_box_heli", "200Rnd_762x51_Belt_Red"};
 		count=200;
 	};
 	
