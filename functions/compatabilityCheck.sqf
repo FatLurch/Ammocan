@@ -6,6 +6,8 @@ _blacklist = [] call fatLurch_fnc_weaponBlacklist;
 
 _returnValue = true;
 
+if(!(_vehicle isKindOf "Air") && !(_vehicle isKindOf "Car") && !(_vehicle isKindOf "Tank") && !(_vehicle isKindOf "Ship") && !(_vehicle isKindOf "staticWeapon")) then {_returnValue = false};
+
 {
 	_turretIndex = _x;
 	
