@@ -181,7 +181,9 @@ class cfgWeapons
 			"Ammocan_UK3CB_BAF_32Rnd_40mm_G_Box", 
 			"Ammocan_CUP_100Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M", 
 			"Ammocan_1000Rnd_762x51", 
-			"Ammocan_900Rnd_127x99"
+			"Ammocan_900Rnd_127x99", 
+			"Ammocan_BWA3_120Rnd_762x51_soft", 
+			"Ammocan_1200Rnd_762x51"
 		};
 	};
 };
@@ -415,9 +417,11 @@ class CfgMagazines
 	class Ammocan_UK3CB_BAF_32Rnd_40mm_G_Box:ammocan_base
  	{
  		//3CB
+ 		//BWMod
+ 		
 		displayName = " Ammocan - 32x 40mm HEDP";
 		descriptionShort = "Ammocan<br>Caliber: 40mm HEDP<br>32 Rounds";
-		magazines[] = {"UK3CB_BAF_32Rnd_40mm_G_Box"};
+		magazines[] = {"UK3CB_BAF_32Rnd_40mm_G_Box", "32Rnd_40mm_G_belt"};
 		count=32;
 	};
 	
@@ -478,6 +482,19 @@ class CfgMagazines
 		count=100;
 	};
 	
+	// 120x 7.62x51 NATO =====================================================================================================
+
+	class Ammocan_BWA3_120Rnd_762x51_soft:ammocan_base
+ 	{
+ 		//BWMod
+ 		
+ 		//Tracer every 4
+		displayName = " Ammocan - 120x 7.62x51mm";
+		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm<br>120 Rounds";
+		magazines[] = {"BWA3_120Rnd_762x51_soft"};
+		count=120;
+	};
+	
 	// 200x 7.62x51 NATO =====================================================================================================
 
 	class Ammocan_rhs_mag_762x51_M240_200:ammocan_base
@@ -516,6 +533,19 @@ class CfgMagazines
 		magazines[] = {"vurtual_1000rnd_762x51_box"};
 		mass = 150;
 		count=1000;
+	};
+		
+	// 1200x 7.62x51 NATO =================================================================================================
+		
+	class Ammocan_1200Rnd_762x51:ammocan_base
+ 	{
+ 		//BWMod
+ 		
+		displayName = " Ammocan - 1200x 7.62x51mm";
+		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm<br>1200 Rounds";
+		magazines[] = {"BWA3_1200Rnd_762x51"};
+		mass = 150;
+		count=1200;
 	};
 		
 	// 2000x 7.62x51 NATO =================================================================================================
