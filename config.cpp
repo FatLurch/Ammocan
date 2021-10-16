@@ -160,7 +160,6 @@ class Extended_InitPost_EventHandlers
    	};
 };
 
-
 class Extended_PreInit_EventHandlers
 {
     class fatLurch_Ammocan_PreInits
@@ -168,6 +167,7 @@ class Extended_PreInit_EventHandlers
         // This snippet runs once and only on client machines
         clientInit = "[] call fatLurch_fnc_registerKeybinds;";
     };
+
 };
 
 
@@ -179,6 +179,8 @@ class cfgWeapons
 	class Rifle_Base_F;
 	class ammocan_fake_gun:Rifle_Base_F
 	{
+		scope=2;
+		displayName = "";
 		magazines[] = 
 		{
 			"Ammocan_762x51_100x",
@@ -227,6 +229,24 @@ class cfgWeapons
 			"Ammocan_GAT_1x"
 			
 		};
+	};
+
+	class ammocan_fake_gun_4:ammocan_fake_gun
+	{
+		cursor = "rocket";
+		type=4;
+	};
+
+	//
+
+	class ammocan_fake_gun_5:ammocan_fake_gun
+	{
+		cursor = "mg";
+	};
+	
+	class ammocan_fake_gun_6:ammocan_fake_gun
+	{
+		cursor = "srifle";
 	};
 };
 

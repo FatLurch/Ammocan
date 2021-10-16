@@ -45,7 +45,7 @@ if(_preferredMagType != "") then
 	{			
 		_magArray = getArray (configFile >> "CfgMagazines" >> _x >> "magazines");	//Get an array of which ammo types the ammocan can supply
 		
-		_matchMagazine = _vehMags arrayIntersect _magArray;	//see if there are matches between the ammo types the ammocan supports, and the types the weapon can use
+		_matchMagazine = ([_vehMags] call fatLurch_fnc_toLowerArray) arrayIntersect ([_magArray] call fatLurch_fnc_toLowerArray);	//see if there are matches between the ammo types the ammocan supports, and the types the weapon can use
 		
 		//If there the ammo types are compatible
 		if(count _matchMagazine > 0 && !_found) then
