@@ -993,9 +993,11 @@ class CfgMagazines
  		//Vanilla
  		//RHS
  		//CUP
+		//Prarie Fire DLC
+
 		displayName = " Ammocan - 100x .50 Cal (12.7x99) Ball";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm<br>100 Rounds";
-		magazines[] = {"100rnd_127x99_mag", "rhs_mag_100rnd_127x99_mag","CUP_100rnd_127x99_M"};
+		magazines[] = {"100rnd_127x99_mag", "rhs_mag_100rnd_127x99_mag","CUP_100rnd_127x99_M", "vn_m2_v_100_mag"};
 		count=100;
 	};
  	
@@ -1244,11 +1246,12 @@ class CfgMagazines
 	class Ammocan_762x51_100x:ammocan_base
  	{
  		//CUP
+		//Prarie Fire DLC
  		
  		//Tracer every 4
 		displayName = " Ammocan - 100x 7.62x51mm";
 		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm<br>100 Rounds";
-		magazines[] = {"CUP_100rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M"};
+		magazines[] = {"CUP_100rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M", "vn_m60_v_100_mag"};
 		count=100;
 	};
 	
@@ -1328,9 +1331,11 @@ class CfgMagazines
  		//Vanilla
  		//CUP (used in M134)
  		//Vurtual HMMWV
+		//Prarie Fire DLC
+
 		displayName = " Ammocan - 2000x 7.62x51mm Red Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm Red Tracer<br>2000 Rounds";
-		magazines[] = {"CUP_2000rnd_TE1_Red_Tracer_762x51_M134_M","2000rnd_762x51_Belt_T_Red", "vurtual_2000rnd_762x51_belt_heli", "vurtual_2000rnd_762x51_belt"};
+		magazines[] = {"CUP_2000rnd_TE1_Red_Tracer_762x51_M134_M","2000rnd_762x51_Belt_T_Red", "vurtual_2000rnd_762x51_belt_heli", "vurtual_2000rnd_762x51_belt", "vn_m134_v_2000_mag"};
 		mass = 150;
 		count=2000;
 	};
