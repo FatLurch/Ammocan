@@ -179,7 +179,7 @@ class cfgWeapons
 	class Rifle_Base_F;
 	class ammocan_fake_gun:Rifle_Base_F
 	{
-		scope=2;
+		scope=2;	//Setting this to 2 makes the ammocans visible in the Eden Equipment Inventory for a vehicle 
 		displayName = "";
 		magazines[] = 
 		{
@@ -231,6 +231,7 @@ class cfgWeapons
 		};
 	};
 
+	//These additional fake gun classes make the ammocans visible as items under pistols, sniper rifles and launchers in the Eden Equipment interface
 	class ammocan_fake_gun_4:ammocan_fake_gun
 	{
 		cursor = "rocket";
@@ -262,7 +263,8 @@ class cfgVehicles
 		author = "Fat Lurch";
 		vehicleClass = "Small_items";
 		editorCategory = "fatLurch_edCat_Ammocans";
-		mapSize = 0.2;  	
+		mapSize = 0.2;  
+		model = "\A3\Weapons_f\DummyWeapon.p3d";	
 	};
 
 	// Eden Object Setup #############################################################################################
