@@ -6,6 +6,11 @@ _blacklist = [] call fatLurch_fnc_weaponBlacklist;
 
 _returnValue = true;
 
+if (count(allTurrets [_vehicle, true]) == 0) then 
+{
+	_returnValue = false;
+};
+
 if(!(_vehicle isKindOf "Air") && !(_vehicle isKindOf "Car") && !(_vehicle isKindOf "Tank") && !(_vehicle isKindOf "Ship") && !(_vehicle isKindOf "staticWeapon")) then {_returnValue = false};
 
 {
@@ -27,7 +32,7 @@ if(!(_vehicle isKindOf "Air") && !(_vehicle isKindOf "Car") && !(_vehicle isKind
 					_magType = _x;
 					if([_magType] call fatLurch_fnc_findAmmocanType == "") then	
 					{		
-						if(_verboseOutput) then {diag_log format["### Ammocan - No supported ammocan for magazine type: %1 for weapon: %2 in vehicle type: %3", _magType, _weapon, typeOf _vehicle];};		
+						if(_verboseOutput) then {diag_log format["### Ammocan - No supported ammocan for magazine type: %1 for weapon: %2 in vehicle type: %3", _magType, _weapon, typeOf _vehicle];};	
 					}
 					else
 					{

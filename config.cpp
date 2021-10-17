@@ -4,14 +4,30 @@ class CfgPatches
  	{
  		units[] = {};	
  		weapons[] = {};
- 		requiredVersion = 0.1;
  		requiredAddons[] = {"A3_Weapons_F_Mark", "cba_main"};	
-		version="0.1";
 		author="Fat_Lurch";
+
+		version = 1.1; 
+        versionStr = "1.1.0";
+        versionAr[] = {1, 1, 0};
  	};
  };
+
+class CfgSettings 
+{
+    class CBA 
+	{
+        class Versioning 
+		{
+            class Fat_Lurch_Ammocan 
+			{
+				main_addon = "Fat_Lurch_Ammocan";
+			};
+		};
+	};
+};
  
-  //required for Zeus to see the item?
+//required for Zeus to see the item?
 class CfgAddons 
 {
 	class PreloadAddons 
@@ -791,11 +807,6 @@ class cfgVehicles
 		};
 	};
 
-	/*
-
-	fatLurch_edsubCat_ammocan_missiles
-	*/
-
 	// Missiles ---------------------------------------------------------------------------------------
 
 	class fatLurch_Ammocan_TOW_1x: fatLurch_Ammocan_base
@@ -967,8 +978,8 @@ class CfgMagazines
  		ammo = "";
  		author = "Fat_Lurch";
  		picture = "\Ammocan\data\ammocan.paa";
-		model = "\A3\Structures_F_EPB\Items\Military\Ammobox_rounds_F.p3d";
- 		//model = "\Ammocan\M2A1.p3d";
+		//model = "\A3\Structures_F_EPB\Items\Military\Ammobox_rounds_F.p3d";
+ 		model = "\Ammocan\M2A1.p3d";
  		mass = 50;
  	};
  	// #################################################################################################
@@ -1072,6 +1083,7 @@ class CfgMagazines
 	 class Ammocan_127x99_200x_Tracer_Yellow:ammocan_base
  	{
  		//Vanilla
+		//FFAA
 		displayName = " Ammocan - 200x .50 Cal (12.7x99) Yellow Tracer";
 		descriptionShort = "Ammocan<br>Caliber: 12.7x99 mm Yellow Tracer<br>200 Rounds";
 		magazines[] = {"200rnd_127x99_mag_Tracer_Yellow"};
@@ -1172,10 +1184,12 @@ class CfgMagazines
  	{
  		//3CB
  		//BWMod
+		//CUP
+		//FFAA
  		
 		displayName = " Ammocan - 32x 40mm HEDP";
 		descriptionShort = "Ammocan<br>Caliber: 40mm HEDP<br>32 Rounds";
-		magazines[] = {"UK3CB_BAF_32rnd_40mm_G_Box", "32rnd_40mm_G_belt", "CUP_32Rnd_40mm_MK19_M"};
+		magazines[] = {"UK3CB_BAF_32rnd_40mm_G_Box", "32rnd_40mm_G_belt", "CUP_32Rnd_40mm_MK19_M","ffaa_32rnd_lag40"};
 		count=32;
 	};
 	
@@ -1243,11 +1257,12 @@ class CfgMagazines
 	class Ammocan_762x51_120x:ammocan_base
  	{
  		//BWMod
+		//Global Modernization
  		
  		//Tracer every 4
 		displayName = " Ammocan - 120x 7.62x51mm";
 		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm<br>120 Rounds";
-		magazines[] = {"BWA3_120rnd_762x51_soft"};
+		magazines[] = {"BWA3_120rnd_762x51_soft", "gm_120Rnd_762x51mm_b_t_DM21A1_mg3_grn"};
 		count=120;
 	};
 	
@@ -1272,11 +1287,12 @@ class CfgMagazines
  		//Vurtual HMMWV
  		//Foxhound LPPV
 		//CUP
- 		
+ 		//HAFM
+
  		//Tracer every 5
 		displayName = " Ammocan - 200x 7.62x51mm";
 		descriptionShort = "Ammocan<br>Caliber: 7.62x51mm Ball<br>200 Rounds";
-		magazines[] = {"rhs_mag_762x51_M240_200", "UK3CB_BAF_762_200rnd", "UK3CB_BAF_762_200rnd_T", "vurtual_200rnd_762x51_box", "vurtual_200rnd_762x51_box_heli", "200rnd_762x51_Belt_Red", "CUP_200Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M"};
+		magazines[] = {"rhs_mag_762x51_M240_200", "UK3CB_BAF_762_200rnd", "UK3CB_BAF_762_200rnd_T", "vurtual_200rnd_762x51_box", "vurtual_200rnd_762x51_box_heli", "200rnd_762x51_Belt_Red", "CUP_200Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M", "MG3_762V", "200Rnd_762x51_Belt"};
 		count=200;
 	};
 	

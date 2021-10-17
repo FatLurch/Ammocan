@@ -7,7 +7,8 @@ _blacklist =
 	"rhsusf_weap_m259", 
 	"rhsusf_weap_DummyLauncher",
 	"vurtual_smokelauncher_crows", 
-	"bwa3_dingo_smokelauncher"
+	"bwa3_dingo_smokelauncher", 
+	"ffaa_safeweapon"
 ];	
 
 [_blacklist] call fatLurch_fnc_toLowerArray;

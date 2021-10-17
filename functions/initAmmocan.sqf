@@ -2,9 +2,11 @@
 
 params["_vehicle"];
 
+_verbose = (missionnamespace getVariable "Fat_Lurch_Ammocan_Verbose");	//CBA option to have verbose unsupported ammo output to the log
+
 //Check to see if a vehicle is supported
 
-if(!([_vehicle, true] call fatLurch_fnc_compatabilityCheck)) exitWith {};	//Do not load the ammocan functions onto the vehicle if it has unsupported weapons
+if(!([_vehicle, _verbose] call fatLurch_fnc_compatabilityCheck)) exitWith {};	//Do not load the ammocan functions onto the vehicle if it has unsupported weapons
 
 _turretIndex = [];
 
